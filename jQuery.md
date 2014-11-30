@@ -1,3 +1,5 @@
+Ressource : [jQuery Learning Center](http://learn.jquery.com/)
+
 **Que peut-on mettre dans la partie $() ?**
 
 - un sélecteur CSS 
