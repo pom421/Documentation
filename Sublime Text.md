@@ -7,6 +7,7 @@ Après avoir installé Package control
   - Obtenir un token Github via la page : https://github.com/settings/applications#personal-access-tokens
   - dans le settings user du plugin (qui est vide), ajouter : 
   
+  ````  
   {
       "token": "679d7251e6cc98ebddb5f64c64b44cc76b61fa25"
   }
