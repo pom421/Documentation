@@ -1,7 +1,7 @@
 
 Après avoir installé Package control
 
-- pour avoir l'insertion de Gist
+- pour avoir l'insertion de Gist (https://github.com/condemil/Gist)
   - Cmd Shift P : Package control : install package
   - Choisir Gist
   - Obtenir un token Github via la page : https://github.com/settings/applications#personal-access-tokens
@@ -9,7 +9,5 @@ Après avoir installé Package control
   
   ````  
   {
-      "token": "679d7251e6cc98ebddb5f64c64b44cc76b61fa25"
+      "token": "xxx"
   }
-  
-  Doc : https://github.com/condemil/Gist
