@@ -2,6 +2,9 @@
 - Liste des raccourcis claviers pour OSX
   - https://gist.github.com/lucasfais/1207002 
 
+- Documentation Emmet 
+  - http://docs.emmet.io/abbreviations/syntax/
+
 - pour avoir l'insertion de Gist (https://github.com/condemil/Gist)
   - Prérequis : Package control installé
   - Cmd Shift P : "Package control : install package"
