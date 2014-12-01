@@ -5,7 +5,7 @@
 - Documentation Emmet 
   - http://docs.emmet.io/abbreviations/syntax/
   - http://docs.emmet.io/cheat-sheet/
-    - pour avoir un document html, écrire doc[tab], ou ![tab] pour l'entête HTML5
+    - pour avoir un document html, écrire doc[tab], ou ![tab] pour l'entête HTML5 ou html:xml pour du XML
 
 - pour avoir l'insertion de Gist (https://github.com/condemil/Gist)
   - Prérequis : Package control installé
