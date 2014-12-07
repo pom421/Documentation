@@ -27,5 +27,5 @@ Commandes classiques
 - // pull request sur GH
 - git checkout master
 - git merge autre-fonctionnalite
-git branch -D autre-fonctionnalite
-git push origin --delete autre-fonctionnalite
+- git branch -D autre-fonctionnalite
+- git push origin --delete autre-fonctionnalite
