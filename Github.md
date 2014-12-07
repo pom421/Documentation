@@ -1,6 +1,13 @@
 Commandes classiques
 
+Convention 
+
+	Origin : nom de la remote par défaut d'un repo
+	Master : branche par défaut
+	Upstream : nom de la remote d'un repo forké 
+
 **Workflow personnel**
+
 
 - git remote add origin https://github.com/pom421/hello-world.git
 - git branch super-fonctionnalite
