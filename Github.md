@@ -14,7 +14,7 @@ Convention
 - git checkout super-fonctionnalite # faux-ami SVN : permet de se positionner sur la nouvelle branche
 - touch toto.sh
 - git add . # faux ami SVN : à faire même pour un fichier déjà connu du repo
-- git commit -m "ajout du script toto" # ou git commit -m "blabla" -a pour éviter ligne précédente
+- git commit -m "ajout du script toto" # ou git -a commit -m "blabla" pour éviter ligne précédente
 - git checkout master # on se repositionne sur la branche master
 - git merge super-fonctionnalite # merge des 2 branches
 - git branch -D super-fonctionnalite # suppression en local
@@ -30,9 +30,15 @@ Convention
 - git checkout autre-fonctionnalite
 - touch titi.sh
 - git commit -a -m "ajout de fonctionnalite"
+- git pull # pour récupérer les modifications du repo distant
 - git push origin autre-fonctionnalite
 - // pull request sur GH
 - git checkout master
 - git merge autre-fonctionnalite
 - git branch -D autre-fonctionnalite
 - git push origin --delete autre-fonctionnalite
+
+**Divers**
+
+	git status
+	Permet d'avoir des infos imporantes comma la branche en cours d'utilisation ou les fichiers non commits
