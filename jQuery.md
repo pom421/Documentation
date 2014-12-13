@@ -1,4 +1,7 @@
-Ressource : [jQuery Learning Center](http://learn.jquery.com/)
+##Tips jQuery
+
+**Références**
+- [jQuery Learning Center](http://learn.jquery.com/)
 
 **Que peut-on mettre dans la partie $() ?**
 
