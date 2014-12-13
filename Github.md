@@ -1,6 +1,6 @@
-Commandes classiques
+##Commandes classiques Git & GitHub
 
-Convention 
+**Convention**
 
 	Origin : nom de la remote par défaut d'un repo
 	Master : branche par défaut
