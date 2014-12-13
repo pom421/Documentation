@@ -1,5 +1,10 @@
 ##Commandes classiques Git & GitHub
 
+**Références**
+- http://git-scm.com/docs : Référence du site officiel
+- http://sklise.com/2012/09/22/introduction-to-git/ : la base de git
+- http://zachbruggeman.me/github-for-cats/ : la base de github
+
 **Convention**
 
 	Origin : nom de la remote par défaut d'un repo
