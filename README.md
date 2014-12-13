@@ -1,4 +1,1 @@
-js
-==
-
-Doc sur le Javascript
+Doc sur le Javascript, jQuery, Node, Git, Github
