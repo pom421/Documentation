@@ -41,4 +41,5 @@ Convention
 **Divers**
 
 	git status
-	Permet d'avoir des infos imporantes comma la branche en cours d'utilisation ou les fichiers non commits
+
+Permet d'avoir des infos importantes comme la branche en cours d'utilisation ou les fichiers non commits
