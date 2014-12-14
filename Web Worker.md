@@ -4,6 +4,7 @@ But : donner un aperçu de l'avancement d'un traitement backoffice
 
 Référence : 
 - [Lexpage](http://www.lexpage.net/board/thread/183-ide-php/7/) 
+- [Eloquent JS](http://eloquentjavascript.net/14_event.html)
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers?redirectlocale=en-US&redirectslug=DOM%2FUsing_web_workers)
 
 ----
