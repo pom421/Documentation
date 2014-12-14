@@ -8,3 +8,43 @@
 - http://nodejs.org/api/ : API des modules intégrés à Node
 - https://github.com/tdd/node-demo : Explication Node par C. Porteneuve + liens
 
+**Node**
+
+**Récupération des arguments du programme node**
+
+process.argv
+- 0 : l'exécutable node
+- 1 : le chemin du fichier lancé
+- 2 : le 1er argument
+- etc..
+
+**module**
+
+dans le module monModule.js
+````
+module.exports = function(arg1, arg2, callback) { ... };
+````
+
+dans le fichier main
+````
+var fs = require('fs');
+var monModule = require('./monModule');
+````
+
+**Callback**
+idiome node : 
+````
+fs.readdir(path, function(err, data) {
+  if (err)
+    return callback(err);
+  // else ...
+  ...
+  callback(null, list);
+  })
+````
+
+**Helper JS**
+Dans node : tab.forEach(function(elt)), tab.filter(function(elt))
+  
+
+  
