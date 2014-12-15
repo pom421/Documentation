@@ -21,19 +21,19 @@ process.argv
 **module**
 
 dans le module monModule.js
-````
+````js
 module.exports = function(arg1, arg2, callback) { ... };
 ````
 
 dans le fichier main
-````
+````js
 var fs = require('fs');
 var monModule = require('./monModule');
 ````
 
 **Callback**
 idiome node : 
-````
+````js
 fs.readdir(path, function(err, data) {
   if (err)
     return callback(err);
