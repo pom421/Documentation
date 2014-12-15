@@ -46,5 +46,16 @@ fs.readdir(path, function(err, data) {
 **Helper JS**
 Dans node : tab.forEach(function(elt)), tab.filter(function(elt))
   
+**Stream**
 
+Contrairement aux autres callbacks, les callbacks des streams ne prennent qu'un argument. 
+3 évènements sont alors interceptables : data, error et end. 
+  ````js
+  var http = require('http');
+  http.get('http://www.lexpage.net', function(response) {
+    response.setEncoding('utf-8');
+    response.on('data', console.log);
+    response.on('error', consol.error);
+  });
+  ````
   
