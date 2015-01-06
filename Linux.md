@@ -18,3 +18,34 @@ Si l'on veut que les erreurs soient dans le fichier final :
   ou 
   ma-commande > resultat.txt 2>&1
   ````
+
+Les caractères de recherches sont ?, * et la parenthèse droite []. 
+  ````
+  ls pierre-[a-q]livier.txt
+  ls pierre-[!stuv]livier.txt
+  ````
+  
+**Find**
+
+  ````sh
+  find . -iname "*.swp" -exec rm {} ';'
+  ou pour avoir une confirmation
+  find . -iname "*.swp" -ok rm {} ';' 
+  ````
+-ctime : la date de dernier changement des méta data de l'inode (ex: changement permission, etc..) Au début, la date de création du fichier. 
+-atime : la date de dernier accès
+-mtime : la date de dernière modification
+
+-size : avec date en byte c, k, M ou G. Avec + ou - pour donner des intervalles
+-type f ou d : pour le type soit fichier soit répertoire
+
+  ````
+  find / -size +10M -exec command {} ';'
+  
+  # les fichiers modifiés aujourd'hui
+  find / -mtime 0
+  
+  # les fichiers accédés depuis moins d'une heure
+  find / -atime -1h
+  ````
+  
