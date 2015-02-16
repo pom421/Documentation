@@ -10,6 +10,7 @@
 	Origin : nom de la remote par défaut d'un repo
 	Master : branche par défaut
 	Upstream : nom de la remote d'un repo forké 
+	origin/master : branche principale de la remote sur GH. git status se compare par rapport à elle
 
 **Workflow personnel**
 
@@ -29,19 +30,19 @@
 ------------
 **Workflow Fork & pull**
 
-- // Fork sur GH
+- // Fork sur GH via le bouton Fork en haut à droite
 - git clone https://github.com/pom421/patchwork.git
-- git branch autre-fonctionnalite
-- git checkout autre-fonctionnalite
+- git branch autre-fonctionnalite # création d'une nouvelle branche
+- git checkout autre-fonctionnalite # autre-fonctionnalite devient la branche courante
 - touch titi.sh
 - git commit -a -m "ajout de fonctionnalite"
 - git pull # pour récupérer les modifications du repo distant
-- git push origin autre-fonctionnalite
+- git push origin autre-fonctionnalite # On pousse au serveur la nouvelle branche sur la remote de GH
 - // pull request sur GH
-- git checkout master
-- git merge autre-fonctionnalite
-- git branch -D autre-fonctionnalite
-- git push origin --delete autre-fonctionnalite
+- git checkout master # on revient sur la branche master
+- git merge autre-fonctionnalite # on fusionne 
+- git branch -D autre-fonctionnalite # on supprime la branche en local
+- git push origin --delete autre-fonctionnalite # on pousse les modifications en remote et suppression de autre-fonctionnalite
 
 **Divers**
 
