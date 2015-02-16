@@ -24,7 +24,7 @@
 - git checkout master # on se repositionne sur la branche master
 - git merge super-fonctionnalite # merge des 2 branches
 - git branch -D super-fonctionnalite # suppression en local
-- git push --delete super-fonctionnalite # suppression en remote
+- git push origin --delete super-fonctionnalite # suppression en remote
 
 
 ------------
