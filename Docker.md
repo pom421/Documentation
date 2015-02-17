@@ -1,5 +1,8 @@
 Docker
 
+Référence Dockerfile : http://docs.docker.com/reference/builder/
+
+
 - docker build : charge les infos à partir du Dockerfile
 - docker run : lance le container
 - docker images : montre toutes les images crées (l'image chargée par un run plus celles héritées)
