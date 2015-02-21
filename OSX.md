@@ -12,3 +12,9 @@ Dans le .bashrc (par exemple)
 	alias ll="ls -al"
 	export CLICOLOR=1
 	
+À noter que le système cherche dans cet ordre : 
+
+	/etc/profile
+	~/.bash_profile
+	~/.bash_login
+	~/.profile
