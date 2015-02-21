@@ -1,4 +1,4 @@
-**Comment avoir des alias dans son shell? **
+#### Comment avoir des alias dans son shell?
 
 Par défaut, les fichiers .bash_profile et .bashrc n'existent pas. 
 
