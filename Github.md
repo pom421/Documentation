@@ -4,6 +4,7 @@
 - http://git-scm.com/docs : Référence du site officiel
 - http://sklise.com/2012/09/22/introduction-to-git/ : la base de git
 - http://zachbruggeman.me/github-for-cats/ : la base de github
+- http://gitref.org/index.html : référence git selon github (top!)
 
 **Convention**
 
