@@ -8,6 +8,31 @@
 - http://nodejs.org/api/ : API des modules intégrés à Node
 - https://github.com/tdd/node-demo : Explication Node par C. Porteneuve + liens
 
+**JS**
+
+6 types JS :
+
+- numbers       
+- string
+- Booleans
+- object
+- function
+- undefined values : undefined (= void java), null
+
+Les numbers ont 3 valeurs particulières :
+
+- Infinity et -Infinity
+- NaN, une valeur number qui ne rend pas de valeur précise ou qui ait du sens (ex : 0/0, Infinity - Infinity)
+Attention : NaN est la seule valeur qui rend false à console.log(NaN == NaN)
+    
+console.log(typeof 4.5);
+
+Idiome :
+
+    // court-circuit
+    console.log(null || "toto") // -> toto
+
+
 **Node**
 
 **Récupération des arguments du programme node**
