@@ -3,7 +3,7 @@
 
 - Expansion d'accolade {1..10}, {1..10..2} ou {a..g}
 - Expansion de tilde ~
-- Expansion paramètre et variable du shell $var
+- Expansion paramètre et variable du shell $var ou ${var}
 - Expansion de commande $(commande)
 - Expansion arithmétique $(( 10 * 4 ))
 - Expansion de processus
@@ -11,6 +11,24 @@
 - Expansion de nom de fichier ./toto/$.txt ou ./toto/file?.txt
 
 L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
+
+### Expansion de parametres 
+
+http://wiki.bash-hackers.org/syntax/pe
+
+${#PARAMETER} : longueur de la valeur
+${PARAMETER^} : pour mettre le 1er caractère en majuscule (^^ pour toute chaîne)
+${PARAMETER,} : pour mettre le 1er caractère en minuscule (,, pour toute la chaîne)
+${PARAMETER~} : pour inverser la casse (~~ pour toute la chaîne)
+
+${PARAMETER/PATTERN/STRING} : cherche et remplace (// pour l'ensemble de la chaîne)
+${PARAMETER:=WORD} : valeur par défaut si variable inexistante ou vide et assigné à la variable
+${PARAMETER-WORD} : renvoie la valeur par défaut si la variable est inexistante ou vide
+
+${PARAMETER:OFFSET:LENGTH} : renvoie la chaîne à partir de OFFSET (1er caractère = 0)
+${PARAMETER:OFFSET:LENGTH} : idem sur x caractères
+
+ 
 
 ##Commandes
 
