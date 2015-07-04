@@ -20,11 +20,9 @@ http://wiki.bash-hackers.org/syntax/pe
 - ${PARAMETER^} : pour mettre le 1er caractère en majuscule (^^ pour toute chaîne)
 - ${PARAMETER,} : pour mettre le 1er caractère en minuscule (,, pour toute la chaîne)
 - ${PARAMETER~} : pour inverser la casse (~~ pour toute la chaîne)
-
 - ${PARAMETER/PATTERN/STRING} : cherche et remplace (// pour l'ensemble de la chaîne)
 - ${PARAMETER:=WORD} : valeur par défaut si variable inexistante ou vide et assigné à la variable
 - ${PARAMETER-WORD} : renvoie la valeur par défaut si la variable est inexistante ou vide
-
 - ${PARAMETER:OFFSET:LENGTH} : renvoie la chaîne à partir de OFFSET (1er caractère = 0)
 - ${PARAMETER:OFFSET:LENGTH} : idem sur x caractères
 
