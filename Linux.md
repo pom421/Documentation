@@ -1,9 +1,23 @@
+
+### Les 8 sortes d'expansion (ou développement) du bash (dans l'ordre)
+
+- Expansion d'accolade {1..10}, {1..10..2} ou {a..g}
+- Expansion de tilde ~
+- Expansion paramètre et variable du shell $var
+- Expansion de commande $(commande)
+- Expansion arithmétique $(( 10 * 4 ))
+- Expansion de processus
+- Expansion de coupure de mot?
+- Expansion de nom de fichier ./toto/$.txt ou ./toto/file?.txt
+
+L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
+
 ##Commandes
 
 Les commandes ont toujours accès à 3 flux toujours ouverts : 
-- stdin : avec le file descripteur 0
-- stdout : 1
-- stderr : 2
+- /dev/stdin : avec le file descripteur 0
+- /dev/stdout : 1
+- /dev/stderr : 2
 
 Si l'on veut envoyer le retour d'une commande et que les erreurs soient ignorées : 
 
@@ -24,6 +38,12 @@ Les caractères de recherches sont ?, * et la parenthèse droite [].
   ls pierre-[a-q]livier.txt
   ls pierre-[!stuv]livier.txt
   ````
+La manière la plus concise de créer un fichier :
+  ````
+  > monfichier.txt
+  ````
+
+
   
 **Find**
 
@@ -38,6 +58,7 @@ Les caractères de recherches sont ?, * et la parenthèse droite [].
 
 -size : avec date en byte c, k, M ou G. Avec + ou - pour donner des intervalles
 -type f ou d : pour le type soit fichier soit répertoire
+-iname : comme -name mais insensible à la casse
 
   ````
   find / -size +10M -exec command {} ';'
