@@ -85,4 +85,20 @@ La manière la plus concise de créer un fichier :
   # les fichiers accédés depuis moins d'une heure
   find / -atime -1h
   ````
+
+ ````sh
+ # compter les répertoires
+ find . -type d -maxdepth 0 | wc -l
+ # compter les fichiers 
+ find . -type f -maxdepth 0 | wc -l
+
+ # compter les répertoires récursivement 
+ find . -type d | wc -l
+ # compter les fichiers récursivement
+ find . -type f | wc -l
+ 
+ # taille d'un répertoire 
+ du -sh . 
+ # taille de tous les sous répertoires 
+ du -sh *
   
