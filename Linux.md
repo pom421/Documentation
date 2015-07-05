@@ -7,7 +7,7 @@
 - Expansion de commande $(commande)
 - Expansion arithmétique $(( 10 * 4 ))
 - Expansion de processus
-- Expansion de coupure de mot?
+- Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux)
 - Expansion de nom de fichier ./toto/$.txt ou ./toto/file?.txt
 
 L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
