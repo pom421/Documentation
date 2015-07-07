@@ -101,4 +101,7 @@ La manière la plus concise de créer un fichier :
  du -sh . 
  # taille de tous les sous répertoires 
  du -sh *
+ 
+ # retrouver les fichiers de plus de 150M avec xargs
+ find . -size +150M -type f -print0 | xargs -0 ls -al # noter le -print0 et le -0 permettant d'éviter les pb avec les fichiers ayant un caractère quote
   
