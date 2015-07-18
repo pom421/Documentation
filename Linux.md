@@ -8,9 +8,19 @@
 - Expansion arithmétique $(( 10 * 4 ))
 - Expansion de processus
 - Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux)
-- Expansion de nom de fichier ./toto/$.txt ou ./toto/file?.txt
+- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt
 
 L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
+Pour passer outre cette dernière limitation, il faut passer par le hack suivant : 
+
+ eval echo {0..$var}
+
+### Debug
+
+Pour bien comprendre comment se déroule l'expansion : 
+- soit lancer le script avec les commandes sh -x ou sh -v (-x permet de voir toutes les transformations)
+- soit faire une démarcation dans le script set +x ... set -x
+- soit dans le shebang ajouter l'otpion -x ou -v
 
 ### Expansion de parametres 
 
