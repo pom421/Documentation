@@ -1,3 +1,13 @@
+### Quote
+
+3 quote : 
+- ' est le quoting fort : rien n'est interprété
+- " est le quoting faible : seules les expansions de paramètres ($toto) et de commande ($(date)) sont interprétés, tout le reste comme les espaces, tabultation, retour chariot.. sont préservés
+- ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date)
+
+Il existe 3 façons de préserver des caractères : 
+- la quote ' et la double quote " définissent un début et une fin de zone où les caractères ne doivent pas être interprétés
+- la backslash \ permet de préserver uniquement le caractère qui suit
 
 ### Les 8 sortes d'expansion (ou développement) du bash (dans l'ordre)
 
