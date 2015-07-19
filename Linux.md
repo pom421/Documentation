@@ -19,7 +19,7 @@ Pour passer outre cette dernière limitation, il faut passer par le hack suivant
 
 Pour bien comprendre comment se déroule l'expansion : 
 - soit lancer le script avec les commandes sh -x ou sh -v (-x permet de voir toutes les transformations)
-- soit faire une démarcation dans le script set +x ... set -x
+- soit faire une démarcation dans le script set -x ... set +x
 - soit dans le shebang ajouter l'otpion -x ou -v
 
 ### Expansion de parametres 
