@@ -3,8 +3,8 @@
 
 - Expansion d'accolade {1..10}, {1..10..2} ou {a..g} (pas interprété par le caractère d'échappement ")
 - Expansion de tilde ~ (pas interprété par ")
-- Expansion paramètre et variable du shell $var ou ${var} (interprété par ")
-- Expansion de commande $(commande) (interprété par ")
+- **Expansion paramètre et variable du shell $var ou ${var} (interprété par ")**
+- **Expansion de commande $(commande) (interprété par ")**
 - Expansion arithmétique $(( 10 * 4 )) (pas interprété par ")
 - Expansion de processus
 - Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux) (par interprété par " c'est à dire que les espaces sont laissés tels quels)
