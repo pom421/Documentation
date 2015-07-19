@@ -1,14 +1,14 @@
 
 ### Les 8 sortes d'expansion (ou développement) du bash (dans l'ordre)
 
-- Expansion d'accolade {1..10}, {1..10..2} ou {a..g}
-- Expansion de tilde ~
-- Expansion paramètre et variable du shell $var ou ${var}
-- Expansion de commande $(commande)
-- Expansion arithmétique $(( 10 * 4 ))
+- Expansion d'accolade {1..10}, {1..10..2} ou {a..g} (pas interprété par le caractère d'échappement ")
+- Expansion de tilde ~ (pas interprété par ")
+- Expansion paramètre et variable du shell $var ou ${var} (interprété par ")
+- Expansion de commande $(commande) (interprété par ")
+- Expansion arithmétique $(( 10 * 4 )) (pas interprété par ")
 - Expansion de processus
-- Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux)
-- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt
+- Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux) (par interprété par " c'est à dire que les espaces sont laissés tels quels)
+- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt (par interprété par ")
 
 L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
 Pour passer outre cette dernière limitation, il faut passer par le hack suivant : 
