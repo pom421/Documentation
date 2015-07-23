@@ -133,22 +133,18 @@ La manière la plus concise de créer un fichier :
  
  # tous les fichiers qui ont un certains motifs et contiennent un certain motif
  find . -print0 | grep  -z '\.txt' | xargs -0 grep 'beau'
- 
- Le -z permet de mettre un octet null à la fin de chaque fichier (plutôt qu'un saut de ligne)
- Le -print0 / xargs -0 permet de gérer les espaces ou saut de ligne éventuel dans le nom du fichier
+ ````
+Le -z permet de mettre un octet null à la fin de chaque fichier (plutôt qu'un saut de ligne)
+Le -print0 / xargs -0 permet de gérer les espaces ou saut de ligne éventuel dans le nom du fichier
 
 Grep recherche sur des expressions régulières. 
-Le bash utilise des shell globbing. 
-
-Donc *.txt est étendu par le shell comme n'importe quoi qui finit par .txt. 
-Dans grep * est zéro ou n fois le caractère précédent. 
+Le bash utilise des shell globbing, i.e. *.txt est étendu par le shell comme n'importe quoi qui finit par .txt. 
+Alors que pour grep, le caractère * est zéro ou n fois le caractère précédent. 
 
 Exemple : 
 
+````sh
 find . -name "toto*.txt" # récupère toto.txt, toto1.txt, etc..
 ls | grep "toto.*.txt" fichier # pour chercher le motif toto.txt, toto1.txt dans le fichier
+````
 
-
-
-
-  
