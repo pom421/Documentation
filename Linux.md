@@ -124,4 +124,31 @@ La manière la plus concise de créer un fichier :
  
  # retrouver les fichiers de plus de 150M avec xargs
  find . -size +150M -type f -print0 | xargs -0 ls -al # noter le -print0 et le -0 permettant d'éviter les pb avec les fichiers ayant un caractère quote
+ 
+ # tous les fichiers qui contiennent un certain motifs (-iname pour case insensitive)
+ mac:tmp pom$ find . -iname "*.txt" -print | grep "toto.*.txt"
+ 
+ # tous les fichiers dont les fichiers contiennent un certain motifs (-print0 et xargs -0 permettent de gérer les espaces dans les noms de fichier
+ mac:tmp pom$ find . -name "*.txt" -print0 | xargs -0 grep "beau"
+ 
+ # tous les fichiers qui ont un certains motifs et contiennent un certain motif
+ find . -print0 | grep  -z '\.txt' | xargs -0 grep 'beau'
+ 
+ Le -z permet de mettre un octet null à la fin de chaque fichier (plutôt qu'un saut de ligne)
+ Le -print0 / xargs -0 permet de gérer les espaces ou saut de ligne éventuel dans le nom du fichier
+
+Grep recherche sur des expressions régulières. 
+Le bash utilise des shell globbing. 
+
+Donc *.txt est étendu par le shell comme n'importe quoi qui finit par .txt. 
+Dans grep * est zéro ou n fois le caractère précédent. 
+
+Exemple : 
+
+find . -name "toto*.txt" # récupère toto.txt, toto1.txt, etc..
+ls | grep "toto.*.txt" fichier # pour chercher le motif toto.txt, toto1.txt dans le fichier
+
+
+
+
   
