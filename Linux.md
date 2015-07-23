@@ -126,10 +126,10 @@ La manière la plus concise de créer un fichier :
  find . -size +150M -type f -print0 | xargs -0 ls -al # noter le -print0 et le -0 permettant d'éviter les pb avec les fichiers ayant un caractère quote
  
  # tous les fichiers qui contiennent un certain motifs (-iname pour case insensitive)
- mac:tmp pom$ find . -iname "*.txt" -print | grep "toto.*.txt"
+ find . -iname "*.txt" -print | grep "toto.*.txt"
  
  # tous les fichiers dont les fichiers contiennent un certain motifs (-print0 et xargs -0 permettent de gérer les espaces dans les noms de fichier
- mac:tmp pom$ find . -name "*.txt" -print0 | xargs -0 grep "beau"
+ find . -name "*.txt" -print0 | xargs -0 grep "beau"
  
  # tous les fichiers qui ont un certains motifs et contiennent un certain motif
  find . -print0 | grep  -z '\.txt' | xargs -0 grep 'beau'
