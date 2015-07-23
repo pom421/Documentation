@@ -2,7 +2,7 @@
 
 3 quote : 
 - ' est le quoting fort : rien n'est interprété
-- " est le quoting faible : seules les expansions de paramètres ($toto) et de commande ($(date)) sont interprétés, tout le reste comme les espaces, tabultation, retour chariot.. sont préservés
+- " est le quoting faible : seules les expansions de paramètres ($toto) et de commande ($(date)) sont interprétés, tout le reste comme les espaces, tabultation, retour chariot.. sont préservés. Pas de SHELL GLOBBING effectué.
 - ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date)
 
 Il existe 3 façons de préserver des caractères : 
@@ -18,7 +18,7 @@ Il existe 3 façons de préserver des caractères :
 - Expansion arithmétique $(( 10 * 4 )) (pas interprété par ")
 - Expansion de processus
 - Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux) (par interprété par " c'est à dire que les espaces sont laissés tels quels)
-- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt (par interprété par ")
+- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt (par interprété par ") == SHELL GLOBBING
 
 L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
 Pour passer outre cette dernière limitation, il faut passer par le hack suivant : 
