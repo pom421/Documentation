@@ -1,33 +1,35 @@
 ### Quote
 
-3 quote : 
 - ' est le quoting fort : rien n'est interprété
 - " est le quoting faible : seules les expansions de paramètres ($toto) et de commande ($(date)) sont interprétés, tout le reste comme les espaces, tabultation, retour chariot.. sont préservés. Pas de SHELL GLOBBING effectué.
-- ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date)
+- ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date))
 
-Il existe 3 façons de préserver des caractères : 
+Il existe 3 façons de préserver ou échapper des caractères : 
 - la quote ' et la double quote " définissent un début et une fin de zone où les caractères ne doivent pas être interprétés
 - la backslash \ permet de préserver uniquement le caractère qui suit
 
 ### Les 8 sortes d'expansion (ou développement) du bash (dans l'ordre)
 
-- Expansion d'accolade {1..10}, {1..10..2} ou {a..g} (pas interprété par le caractère d'échappement ")
-- Expansion de tilde ~ (pas interprété par ")
-- **Expansion paramètre et variable du shell $var ou ${var} (interprété par ")**
-- **Expansion de commande $(commande) (interprété par ")**
-- Expansion arithmétique $(( 10 * 4 )) (pas interprété par ")
+- Expansion d'accolade {1..10}, {1..10..2} ou {a..g} 
+- Expansion de tilde ~ 
+- **Expansion paramètre et variable du shell $var ou ${var}**
+- **Expansion de commande $(commande)**
+- Expansion arithmétique $(( 10 * 4 )) 
 - Expansion de processus
-- Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux) (par interprété par " c'est à dire que les espaces sont laissés tels quels)
-- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt (par interprété par ") == SHELL GLOBBING
+- Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux)
+- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt  == SHELL GLOBBING
 
-L'ordre veut dire que {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord.  
-Pour passer outre cette dernière limitation, il faut passer par le hack suivant : 
+En gras, ce qui est interprété par ".
 
+Comme les expansions sont ordonnés, {0..$var} est impossible puisque l'opérateur accolade doit être étendu d'abord. Pour passer outre cette dernière limitation, il faut passer par le hack suivant : 
+ 
+ ````sh
  eval echo {0..$var}
-
+ ````
+ 
 ### Debug
 
-Pour bien comprendre comment se déroule l'expansion : 
+Pour débuguer comment se déroule l'expansion : 
 - soit lancer le script avec les commandes sh -x ou sh -v (-x permet de voir toutes les transformations)
 - soit faire une démarcation dans le script set -x ... set +x
 - soit dans le shebang ajouter l'otpion -x ou -v
