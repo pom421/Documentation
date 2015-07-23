@@ -17,7 +17,7 @@ Il existe 3 façons de préserver ou échapper des caractères :
 - Expansion arithmétique $(( 10 * 4 )) 
 - Expansion de processus
 - Expansion de coupure de mot (IFS par défaut = espace ou tab pour séparer les mots entre eux)
-- Expansion de nom de fichier ./toto/*.txt ou ./toto/file?.txt  == SHELL GLOBBING
+- Expansion de chemin ./toto/*.txt ou ./toto/file?.txt  == SHELL GLOBBING
 
 En gras, ce qui est interprété par ".
 
