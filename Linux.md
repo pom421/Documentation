@@ -1,8 +1,8 @@
 ### Quote
 
 - ' est le quoting fort : rien n'est interprété
-- " est le quoting faible : seules les expansions de paramètres ($toto) et de commande ($(date)) sont interprétés, tout le reste comme les espaces, tabultation, retour chariot.. sont préservés. Pas de SHELL GLOBBING effectué.
-- ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date))
+- " est le quoting faible : seules les expansions de paramètres $toto et de commande $(date) sont interprétées, tout le reste comme les espaces, tabulation, retour chariot.. sont préservés. Pas de SHELL GLOBBING effectué.
+- ‘ la quote inversé ne permet pas de préserver les caractères mais de susbstituer une commande (mais il est préconisé maintenant de passer par la syntaxe $(date)
 
 Il existe 3 façons de préserver ou échapper des caractères : 
 - la quote ' et la double quote " définissent un début et une fin de zone où les caractères ne doivent pas être interprétés
@@ -48,14 +48,12 @@ http://wiki.bash-hackers.org/syntax/pe
 - ${PARAMETER:OFFSET:LENGTH} : renvoie la chaîne à partir de OFFSET (1er caractère = 0)
 - ${PARAMETER:OFFSET:LENGTH} : idem sur x caractères
 
- 
-
 ##Commandes
 
 Les commandes ont toujours accès à 3 flux toujours ouverts : 
 - /dev/stdin : avec le file descripteur 0
-- /dev/stdout : 1
-- /dev/stderr : 2
+- /dev/stdout : avec le file descripteur 1
+- /dev/stderr : avec le file descripteur 2
 
 Si l'on veut envoyer le retour d'une commande et que les erreurs soient ignorées : 
 
@@ -81,8 +79,6 @@ La manière la plus concise de créer un fichier :
   > monfichier.txt
   ````
 
-
-  
 **Find**
 
   ````sh
