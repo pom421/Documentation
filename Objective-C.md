@@ -70,3 +70,18 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
         NSLog(@"%@", _questionsArray[i]);
     }
     ```
+    
+    ```objective-c
+    // alloc est une méthode de classe (+) alors qu'init est une méthode d'instance (-)
+    [[Question alloc] init]
+    
+    ```
+
+### Cycle de vie
+  
+- viewDidLoad: initialiser les ressources
+- viewWillAppear : reprendre le tracking GPS, spinner
+- viewDidAppear : 
+- viewWillDisappear : arrêt GPS
+- viewDidDisappear : fin des animations
+- viewDidUnload : suppression de la mémoire par le système
