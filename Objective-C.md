@@ -8,7 +8,10 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
   - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transcationnelle)
   - copy permet de dire qu'on gère cette propriété par recopie
   - assign permet de dire qu'on gère cette propriété par référence
-  
+
+- NSLog permet d'afficher des choses dans la console
+- @"Une chaine de caractère standard"
+
 - NSArray  
   ```objective-c
     _questionsArray = [[NSArray alloc] initWithObjects:
@@ -24,3 +27,29 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
    self.answersArray = @[@"Istanbul", @"La Havane", @"Rome", @"Brasilia", @"Bogotta"];
 
   ```
+
+- IBOutlet, IBAction : objets récupérés de l'outil InterfaceBuilder (outil WYSIWIG pour dessiner les ViewController)
+
+- NSxxx ou UIxxx préfixe des objets Objective-C (NS pour NextStep)
+
+- invocation d'une méthode : 
+  ```objective-c
+  [beagle feedWithSnack:snack andWater:YES]
+  ```
+  
+  ## Correspondance Java/Objectice-C
+  - instance -> receiver
+  - méthode -> selector
+  - argument -> argument
+  
+  ```objective-c
+  // vérifier que beagle est différent de nil
+  if (beagle) {
+    // faire quelque chose
+  }
+  
+  beagle = nil;
+  [beagle feedWithSnack:snack andWater:YES]
+  // pas de crash
+  ```
+  
