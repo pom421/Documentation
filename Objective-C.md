@@ -30,7 +30,7 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
 
 - IBOutlet, IBAction : objets récupérés de l'outil InterfaceBuilder (outil WYSIWIG pour dessiner les ViewController)
 
-- NSxxx ou UIxxx préfixe des objets Objective-C (NS pour NextStep)
+- NSxxx ou UIxxx préfixe des objets Objective-C (NS pour NextStep). NSObject est la classe de plus haut niveau
 
 - invocation d'une méthode : 
   ```objective-c
@@ -53,3 +53,20 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
   // pas de crash
   ```
   
+  ```objective-c
+    // NSLog est une fonction (et pas une méthode de classe). C'est pour cela qu'elle ne respsecte pas la syntaxe crochet
+    NSLog(@"Ma question est : %@ et son nombre de point(s) est %d", question.title, question.points);
+  ```
+  ```objective-c
+  [NSString stringWithFormat:@"(%d pts)", question.points];
+  ```
+  ```objective-c
+   // 2 styles pour les boucles
+    for (Question *question in _questionsArray) {
+        NSLog(@"%@", [question description]);
+    }
+    
+    for (int i = 0; i < _questionsArray.count; i++) {
+        NSLog(@"%@", _questionsArray[i]);
+    }
+    ```
