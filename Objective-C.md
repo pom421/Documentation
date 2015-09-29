@@ -85,3 +85,28 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
 - viewWillDisappear : arrêt GPS
 - viewDidDisappear : fin des animations
 - viewDidUnload : suppression de la mémoire par le système
+
+  ```objective-c
+  self.title = title
+  // équivalent
+  [self setTitle:title]
+  
+  // on peut surcharger le setTitle même si on a définit une property plus haut
+  @property (nonatomic, copy) NSString *title;
+  - (void) setTitle:(NSString *)title {
+    _title = title; //impossible de passer par self.title sinon boucle infinie
+  }
+  // getter
+  - (NSString *)title: {
+    return _title;
+  }
+  ```
+  
+- Propriété par défaut : atomic, strong, readwrite
+  
+  ```objective-c
+  NSString *title = [question title]; // pour récupérer le title de la question (= get)
+  [question setTitle:@"Nouvelle question?"]; // question.title = @""Nouvelle question";
+  ```
+
+- pas de NullPointerException en Objective-C (puisqu'on utilise des messages)
