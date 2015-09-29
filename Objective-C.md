@@ -114,17 +114,18 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
 
 
 
-- (void) test {
-NSString *exemple = @"Exemple";
-NSString *exemple2 = @"Exemple2";
-NSArray *exempleArray = @[exemple, exemple2];
-
-NSArray *exempleArray2 = [[NSArray alloc] initWithObjects:exemple, exemple2, nil];
-
-exemple = nil;
-NSLog(@"%@", exempleArray);
-}
-
+  ```objective-c
+  - (void) test {
+  NSString *exemple = @"Exemple";
+  NSString *exemple2 = @"Exemple2";
+  NSArray *exempleArray = @[exemple, exemple2];
+  
+  NSArray *exempleArray2 = [[NSArray alloc] initWithObjects:exemple, exemple2, nil];
+  
+  exemple = nil;
+  NSLog(@"%@", exempleArray);
+  }
+  ```
 
 #### Distribution en recette
 
@@ -136,8 +137,10 @@ NSLog(@"%@", exempleArray);
   - http://www.git-tower.com/blog/xcode-cheat-sheet
   - http://spin.atomicobject.com/2014/03/23/xcode-keyboard-shortcuts/
 
-- Navigation : NavigationController, pushViewController (nav horizontale), presentViewController (nav verticale)
-- Segue : faire Show sous iPhone (Show detail le fait sous iPad, on garde la liste à gauche et affiche le détail à droite)
+- Navigation : NavigationController, pushViewController (navigation horizontale), presentViewController (navigation verticale)
+- Ajouter un NavigationController ajoute la NavigationBar
+- Segue : pour faire une simple transition d'un VC à un autre VC. Ajouté visuellement via un Ctl-clic puis relier un bouton à un VC puis "present modally"
+  - faire Show sous iPhone (Show detail le fait sous iPad, on garde la liste à gauche et affiche le détail à droite)
 
 #### Boutons alignements/contraintes (onglets en bas à droite de la fenêtre principale d'InterfaceBuilder
 
@@ -146,4 +149,14 @@ NSLog(@"%@", exempleArray);
 - 4ème onglet : pour appliquer les contraintes à InterfaceBuilder (mais si pas appliqué, sera quand même fait dans le simulateur)
 - 
 
+#### Comment ajouter une classe ViewController en association à un élément ViewController du Storyboard?
 
+Faire clic sur le viewController dans le storyboard et ajouter dans le 3ème onglet la classe
+
+Ex de convention de nommage pour la fermeture d'un ViewController : 
+- closeButtonPressed
+
+#### TextField
+
+- becomeFirstResponded : pour donner le focus au TextField (shouldBeginEditing) + afficher le clavier
+- resignFirstResponder : pour sortir du champ, éteindre le clavier (shouldReturn) 
