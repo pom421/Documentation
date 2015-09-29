@@ -130,7 +130,20 @@ NSLog(@"%@", exempleArray);
 
 - avec un compte développeur à 99e/an on a à disposition 100 iphones maximum autorisés pour déployer l'application (hors de l'App store). Chaque iPhone doit être référencé sur le compte (UDID). nKey UDID, application pour récupérer l'UDID de l'iPhone
 
-- on peut déployer via iTunes ou plus simplement via une référence sur internet (ou intranet) via un serveur web sous HTTPS. Il faut que l'application soit signée avec le certificat attribué par Apple lors de la création de l'application. Les n° d'Iphone autorisés sont intégrés à l'application. 
+- on peut déployer via iTunes ou plus simplement via une référence sur internet (ou intranet) via un serveur web sous HTTPS. Il faut que l'application soit signée avec le certificat attribué par Apple lors de la création de l'application. Les n° d'Iphone autorisés sont intégrés à l'application. Ou TestFlight qui permet de recetter. Télécharger une application pour iPhone ou iPad. 
 
-- http://www.git-tower.com/blog/xcode-cheat-sheet
+- Tips : 
+  - http://www.git-tower.com/blog/xcode-cheat-sheet
+  - http://spin.atomicobject.com/2014/03/23/xcode-keyboard-shortcuts/
+
+- Navigation : NavigationController, pushViewController (nav horizontale), presentViewController (nav verticale)
+- Segue : faire Show sous iPhone (Show detail le fait sous iPad, on garde la liste à gauche et affiche le détail à droite)
+
+#### Boutons alignements/contraintes (onglets en bas à droite de la fenêtre principale d'InterfaceBuilder
+
+- stackview : rassemble des composants pour appliquer un ensemble de contraintes à un lot d'éléments
+- 3ème onglet : "Add new constraints" aligne les uns par rapport aux autres
+- 4ème onglet : pour appliquer les contraintes à InterfaceBuilder (mais si pas appliqué, sera quand même fait dans le simulateur)
+- 
+
 
