@@ -1,3 +1,8 @@
+- COCOA : moteur de rendu graphique
+- UIKit : bouton, UICollectionView, 
+- Foundation : NSString, etc..
+
+- outil de prototypage : AppCooker (sur iPad) avec eronomie iPhone, insightly (invision) (png cliquable)
 
 - le storyboard regroupe les vues graphiques et la coordination entre elles. Par exemple
 - tips : faire les liens avec son code et les éléments graphiques. Cliquer sur un bouton ou un label dans le ViewController à partir du Storyboard. 
@@ -79,7 +84,7 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
 
 ### Cycle de vie
   
-- viewDidLoad: initialiser les ressources
+- viewDidLoad: initialiser les ressources + calculs des dimensions suivant les contraintes
 - viewWillAppear : reprendre le tracking GPS, spinner
 - viewDidAppear : 
 - viewWillDisappear : arrêt GPS
@@ -160,3 +165,17 @@ Ex de convention de nommage pour la fermeture d'un ViewController :
 
 - becomeFirstResponded : pour donner le focus au TextField (shouldBeginEditing) + afficher le clavier
 - resignFirstResponder : pour sortir du champ, éteindre le clavier (shouldReturn) 
+
+- UITableView : liste d'élements. 1 élément par ligne
+- UICollectionView : liste d'élements + colonnes. Il peut y avoir des colonnes différentes par ligne. Permet de simplifier un UITableView et permet de mettre un nombre de colonnes différentes en fonction de l'orientation
+
+
+#### Contraintes
+
+Sur un élément graphique, on peut cliquer en bas à droite (3ème icone) pour ajouter des contraintes qui seront respectées pour calculer les dimensions. Ensuite, cliquer dans le 4ème icone à droite pour faire update frames.
+
+Taille des icones à faire par le designer : 156*90 compatible iPhone 6 plus
+
+Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhone on est en retina (donc 2x plus de résolution). Donc sur un ImageView de 52px de largeur, un iPhone 4 et supérieur utilisera une image de 104 pixels.
+
+  
