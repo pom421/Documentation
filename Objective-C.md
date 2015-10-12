@@ -1,18 +1,39 @@
+# Environnement développement mobile Apple
+
 - COCOA : moteur de rendu graphique
 - UIKit : bouton, UICollectionView, 
-- Foundation : NSString, etc..
+- Foundation : NSString, etc.. (NS pour NextStep). NSObject est la classe de plus haut niveau. En type de retour, quand on ne connait pas le type de l'objet rendu on peut mettre id
+- XCode éditeur
+- InterfaceBuilder, outil WYSIWIG de XCode pour dessiner les ViewController et leurs interactions
 
-- outil de prototypage : AppCooker (sur iPad) avec eronomie iPhone, insightly (invision) (png cliquable)
-
-- le storyboard regroupe les vues graphiques et la coordination entre elles. Par exemple
-- tips : faire les liens avec son code et les éléments graphiques. Cliquer sur un bouton ou un label dans le ViewController à partir du Storyboard. 
-Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de récupérer l'objet graphique pour faire un .text par exemple) ou un Action pour réagir à un évènement. 
+### Éléments d'Objective-C
 
 - @property : 
   - permet de définir une propriété à la classe (get/set sur le champ). On accède à un champ par self.nom-du-champ ou par _nom-du-champ.
-  - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transcationnelle)
+  - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transactionnelle)
   - copy permet de dire qu'on gère cette propriété par recopie
   - assign permet de dire qu'on gère cette propriété par référence
+
+- invocation d'une méthode : 
+  ```objective-c
+  [beagle feedWithSnack:snack andWater:YES]
+  ```
+  
+  ## Correspondance Java/Objective-C
+  - instance -> receiver
+  - méthode -> selector
+  - argument -> argument
+  
+  ```objective-c
+  // vérifier que beagle est différent de nil
+  if (beagle) {
+    // faire quelque chose
+  }
+  
+  beagle = nil;
+  [beagle feedWithSnack:snack andWater:YES]
+  // pas de crash
+  ```
 
 - NSLog permet d'afficher des choses dans la console
 - @"Une chaine de caractère standard"
@@ -32,34 +53,9 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
    self.answersArray = @[@"Istanbul", @"La Havane", @"Rome", @"Brasilia", @"Bogotta"];
 
   ```
-
-- IBOutlet, IBAction : objets récupérés de l'outil InterfaceBuilder (outil WYSIWIG pour dessiner les ViewController)
-
-- NSxxx ou UIxxx préfixe des objets Objective-C (NS pour NextStep). NSObject est la classe de plus haut niveau
-
-- invocation d'une méthode : 
-  ```objective-c
-  [beagle feedWithSnack:snack andWater:YES]
-  ```
-  
-  ## Correspondance Java/Objectice-C
-  - instance -> receiver
-  - méthode -> selector
-  - argument -> argument
   
   ```objective-c
-  // vérifier que beagle est différent de nil
-  if (beagle) {
-    // faire quelque chose
-  }
-  
-  beagle = nil;
-  [beagle feedWithSnack:snack andWater:YES]
-  // pas de crash
-  ```
-  
-  ```objective-c
-    // NSLog est une fonction (et pas une méthode de classe). C'est pour cela qu'elle ne respsecte pas la syntaxe crochet
+    // NSLog est une fonction (et pas une méthode de classe). C'est pour cela qu'elle ne respecte pas la syntaxe crochet
     NSLog(@"Ma question est : %@ et son nombre de point(s) est %d", question.title, question.points);
   ```
   ```objective-c
@@ -80,16 +76,6 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
     // alloc est une méthode de classe (+) alors qu'init est une méthode d'instance (-)
     [[Question alloc] init]
     
-    ```
-
-### Cycle de vie
-  
-- viewDidLoad: initialiser les ressources + calculs des dimensions suivant les contraintes
-- viewWillAppear : reprendre le tracking GPS, spinner
-- viewDidAppear : 
-- viewWillDisappear : arrêt GPS
-- viewDidDisappear : fin des animations
-- viewDidUnload : suppression de la mémoire par le système
 
   ```objective-c
   self.title = title
@@ -116,9 +102,6 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
 
 - pas de NullPointerException en Objective-C (puisqu'on utilise des messages)
 
-
-
-
   ```objective-c
   - (void) test {
   NSString *exemple = @"Exemple";
@@ -131,6 +114,17 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
   NSLog(@"%@", exempleArray);
   }
   ```
+    ```
+
+### Cycle de vie d'une application mobile
+  
+- viewDidLoad: initialiser les ressources + calculs des dimensions suivant les contraintes
+- viewWillAppear : reprendre le tracking GPS, spinner
+- viewDidAppear : 
+- viewWillDisappear : arrêt GPS
+- viewDidDisappear : fin des animations
+- viewDidUnload : suppression de la mémoire par le système
+
 
 #### Distribution en recette
 
@@ -142,33 +136,45 @@ Ctl-Clic dans ViewController.m pour récupérer un Outlet (prise, permettant de 
   - http://www.git-tower.com/blog/xcode-cheat-sheet
   - http://spin.atomicobject.com/2014/03/23/xcode-keyboard-shortcuts/
 
-- Navigation : NavigationController, pushViewController (navigation horizontale), presentViewController (navigation verticale)
-- Ajouter un NavigationController ajoute la NavigationBar
-- Segue : pour faire une simple transition d'un VC à un autre VC. Ajouté visuellement via un Ctl-clic puis relier un bouton à un VC puis "present modally"
-  - faire Show sous iPhone (Show detail le fait sous iPad, on garde la liste à gauche et affiche le détail à droite)
-
-#### Boutons alignements/contraintes (onglets en bas à droite de la fenêtre principale d'InterfaceBuilder
-
-- stackview : rassemble des composants pour appliquer un ensemble de contraintes à un lot d'éléments
-- 3ème onglet : "Add new constraints" aligne les uns par rapport aux autres
-- 4ème onglet : pour appliquer les contraintes à InterfaceBuilder (mais si pas appliqué, sera quand même fait dans le simulateur)
-- 
-
 #### Comment ajouter une classe ViewController en association à un élément ViewController du Storyboard?
 
 Faire clic sur le viewController dans le storyboard et ajouter dans le 3ème onglet la classe
 
 Ex de convention de nommage pour la fermeture d'un ViewController : 
-- closeButtonPressed
+- IBAction nommé closeButtonPressed
 
-#### TextField
+## Vue d'ensemble du développement en XCode
 
-- becomeFirstResponded : pour donner le focus au TextField (shouldBeginEditing) + afficher le clavier
-- resignFirstResponder : pour sortir du champ, éteindre le clavier (shouldReturn) 
+- le storyboard regroupe les vues graphiques et la coordination entre elles. 
+- tips : faire les liens avec son code et les éléments graphiques. Cliquer sur un bouton ou un label dans le ViewController à partir du Storyboard. 
+- Ctl-Clic à partir d'un élément graphique (ex : un label) et le mettre dans la partie interface de ViewController.m (ou ViewController.h pour le mettre en public) pour récupérer un Outlet (prise, permettant de récupérer l'objet graphique pour faire un .text par exemple) ou un Action pour réagir à un évènement. 
 
-- UITableView : liste d'élements. 1 élément par ligne
+### View et Controller référence
+
+View
+- UIViewController : Contrôleur standard
+- UITableView : liste d'élements. 1 élément par ligne qui peuvent être de type différent (différencié par u n cellIdentifier)
+- UITableViewCell
 - UICollectionView : liste d'élements + colonnes. Il peut y avoir des colonnes différentes par ligne. Permet de simplifier un UITableView et permet de mettre un nombre de colonnes différentes en fonction de l'orientation
 
+Delegate 
+- UITextFieldDelegate pour gérer les évènements d'un TextField (entrée de texte)
+- UITableViewDelegate pour gérer les évènements d'une TableView
+
+Datasource
+- UITableViewDataSource gère le modèle qui servira de données pour les éléments graphiques
+
+Navigation et presenter
+- NavigationController (ajoute la NavigationBar)
+- PushViewController (navigation horizontale) pour aller vers toujours plus de détails
+- PresentViewController (navigation verticale) interruption de l'activité sur une activité annexe (à vérifier)
+
+Action et Segue
+- IBOutlet, IBAction : objets récupérés de l'outil InterfaceBuilder
+- Segue : pour faire une simple transition d'un VC à un autre VC. Ajouté visuellement via un Ctl-clic puis relier un bouton à un VC puis "present modally"
+  - faire Show sous iPhone (Show detail le fait sous iPad, on garde la liste à gauche et affiche le détail à droite)
+- becomeFirstResponded : pour donner le focus au TextField (shouldBeginEditing) + afficher le clavier
+- resignFirstResponder : pour sortir du champ, éteindre le clavier (shouldReturn) 
 
 #### Contraintes
 
@@ -176,6 +182,13 @@ Sur un élément graphique, on peut cliquer en bas à droite (3ème icone) pour 
 
 Taille des icones à faire par le designer : 156*90 compatible iPhone 6 plus
 
-Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhone on est en retina (donc 2x plus de résolution). Donc sur un ImageView de 52px de largeur, un iPhone 4 et supérieur utilisera une image de 104 pixels.
+Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhone on est en retina (donc haute résolution avec 2x plus de pixels). Donc sur un ImageView de 52px de largeur, un iPhone 4 (et supérieur) utilisera une image de 104 pixels. Dans les faits, un iPhone 4 et 6 utilisera une image png x2. Seul le 6 plus utilisera le x3 (qui est un faux x3 au passage)
 
-  
+- stackview : rassemble des composants pour appliquer un ensemble de contraintes à un lot d'éléments
+- 3ème onglet : "Add new constraints" aligne les uns par rapport aux autres
+- 4ème onglet : pour appliquer les contraintes à InterfaceBuilder (mais si pas appliqué, sera quand même fait dans le simulateur)
+
+## Système de prototypage rapide d'une application mobile
+
+- AppCooker (sur iPad) avec ergonomie iPhone
+- insightly (invision) (png cliquable)
