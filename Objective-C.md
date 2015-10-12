@@ -8,6 +8,16 @@
 
 ### Éléments d'Objective-C
 
+- dans le .h on met l'interface (au sens java). Tout ce qui sera définit ici sera public. Les héritages se mettent ici
+- dans le .m on met l'implémentation. Les propriétés définies dans la partie @interface du .m seront privées et donc inaccessibles à l'extérieur
+- les propriétés qui commencent par "-" sont des variables d'instance
+- les propriétés commençant par "+" sont des variables de classe
+- les classes méres sont renseignés ainsi : 
+  ```objective-c
+  @interface QuestionListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+  ```
+- les classes mère peuvent avoir des méthodes optionnelles (@optionnal) ou obligatoires (@required) à remplir pour les classes filles
+
 - @property : 
   - permet de définir une propriété à la classe (get/set sur le champ). On accède à un champ par self.nom-du-champ ou par _nom-du-champ.
   - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transactionnelle)
@@ -21,7 +31,7 @@
   
   ## Correspondance Java/Objective-C
   - instance -> receiver
-  - méthode -> selector
+  - méthode -> selector (en plusieurs "morceaux")
   - argument -> argument
   
   ```objective-c
