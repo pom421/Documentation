@@ -23,9 +23,11 @@
   - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transactionnelle)
   - copy permet de dire qu'on gère cette propriété par recopie
   - assign permet de dire qu'on gère cette propriété par référence. À faire pour le struct (et ne pas mettre étoile pour défnir la variable)
+  - weak permet de dire qu'en sortant de la méthode qui a valorisé cette propriété, elle pourra être supprimée par le système quand bon lui semble (à vérifier)
+  - strong, à l'inverse permet de garder la valeur de la propriété jusqu'à la sortie de la vue (ou de l'application? question à poser)
   
--  #import pour importer un fichier
--  @import pour importer un fichier d'un framework
+-  #import "MonFichier.h" -> pour importer un fichier
+-  @import CoreLocation; -> pour importer un fichier d'un framework
 
 - invocation d'une méthode : 
   ```objective-c
@@ -193,6 +195,16 @@ Ex de convention de nommage pour la fermeture d'un ViewController :
 - tips : faire les liens avec son code et les éléments graphiques. Cliquer sur un bouton ou un label dans le ViewController à partir du Storyboard. 
 - Ctl-Clic à partir d'un élément graphique (ex : un label) et le mettre dans la partie interface de ViewController.m (ou ViewController.h pour le mettre en public) pour récupérer un Outlet (prise, permettant de récupérer l'objet graphique pour faire un .text par exemple) ou un Action pour réagir à un évènement. 
 
+### Concepts
+
+- Une View est un composant graphique. On entend par là que c'est un artefact à dessinner à un moment donné qui contient donc une largeur et une hauteur
+- une view peut posséder d'autre vue à l'intérieur d'elle-même. Dans ce cas et si on laisse Clip subviews dans l'onget Attributes de InterfaceBuilder, on voit qu'une sous vue qui dépasserait d'une vue mère (appelée Superview) n'affiche pas l'éventuel résidu en dehors de l'espace de la super vue. Si on décoche "Clip Subviews", cependant ce qui dépasse éventuellement est affiché, ceci pour des raisons de performance. Mais aucun évènement ne sera détecté au niveau de ce qui dépasse (même si Clip subviews est décoché)
+- en particulier un Label, un EditView sont des vues. Un TableViewCell est une vue!!
+- un contrôleur est le traitement qui est lancé au démarrage. Il peut piloter une ou plusieurs vues (par exemple un TableView d'un côté et un SearchBar de l'autre)
+- une vue spéciale (Container view) peut contenir un controller...
+- il existe une superview si une vue (une sous-vue donc) appartient à une vue. Cf. contrainte.
+
+
 ### View et Controller référence
 
 View
@@ -228,6 +240,8 @@ Taille des icones à faire par le designer : 156*90 compatible iPhone 6 plus
 
 Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhone on est en retina (donc haute résolution avec 2x plus de pixels). Donc sur un ImageView de 52px de largeur, un iPhone 4 (et supérieur) utilisera une image de 104 pixels. Dans les faits, un iPhone 4 et 6 utilisera une image png x2. Seul le 6 plus utilisera le x3 (qui est un faux x3 au passage)
 
+On peut mettre des contraintes par rapport à une Superview ou à un autre composant. Par exemple, quand on veut mettre un composant sous un autre. Ainsi le composant du dessous se place relativement par rapport à celui du dessus et on gagne en souplesse. self.view n'a pas de superview. 
+
 - stackview : rassemble des composants pour appliquer un ensemble de contraintes à un lot d'éléments
 - 3ème onglet : "Add new constraints" aligne les uns par rapport aux autres
 - 4ème onglet : pour appliquer les contraintes à InterfaceBuilder (mais si pas appliqué, sera quand même fait dans le simulateur)
@@ -241,6 +255,7 @@ Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhon
 
 - http://www.raywenderlich.com/ : tutoriels
 - https://developer.apple.com : swift, objective-c
+- simulateur : pour avoir le clavier Mac en plus, faire Hardware > Keyboard > Connect hardware keyboard
 
 ### GPS
 
