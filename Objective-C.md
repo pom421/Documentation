@@ -22,7 +22,10 @@
   - permet de définir une propriété à la classe (get/set sur le champ). On accède à un champ par self.nom-du-champ ou par _nom-du-champ.
   - nonatomic permet de gérer le setter de manière non atomique (plus rapide mais pas transactionnelle)
   - copy permet de dire qu'on gère cette propriété par recopie
-  - assign permet de dire qu'on gère cette propriété par référence
+  - assign permet de dire qu'on gère cette propriété par référence. À faire pour le struct (et ne pas mettre étoile pour défnir la variable)
+  
+-  #import pour importer un fichier
+-  @import pour importer un fichier d'un framework
 
 - invocation d'une méthode : 
   ```objective-c
@@ -124,7 +127,37 @@
   NSLog(@"%@", exempleArray);
   }
   ```
-    ```
+
+Gestion de bloc asynchrone en Objective-C : 
+- de la forme ^(params) { code; };
+
+  ```objective-c
+    NSString *urlVelib = @"https://api.jcdecaux.com/vls/v1/stations?contract=PARIS&apiKey=50fa844d51fe89f00bd0e227c817728d35d5e6ee";
+    
+    NSURL *stationsWSURL = [NSURL URLWithString:urlVelib];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithURL:stationsWSURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        // Appelé quand la tâche datatask est terminée
+        NSLog(@"ici");
+    }];
+    [task resume];
+    NSLog(@"Et là");
+  ```
+  
+- comment filtrer un NSArray d'objet avec un prédicat
+ 
+  ```objective-c
+  // exemple avec des objets qui ont des propriété name et address
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name contains[c] %@) or (address contains[c] %@)", searchText, searchText];
+    
+  self.velibSearchedStationsArray = [self.velibStationsArray filteredArrayUsingPredicate:predicate];
+  
+  
+  
+En cas d'appel asynchrone, il y a création d'un nouveau thread. 
+Il faut après récupération des résultats, demander à recharger la vue du TableView. Pour cela, on ne peut pas faire un simple [tableView reloadData] car on est sur 2 threads séparés. Plutôt, on peut faire : 
+
+ [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 
 ### Cycle de vie d'une application mobile
   
@@ -135,6 +168,7 @@
 - viewDidDisappear : fin des animations
 - viewDidUnload : suppression de la mémoire par le système
 
+info.plist = manifest en Android
 
 #### Distribution en recette
 
@@ -207,3 +241,13 @@ Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhon
 
 - http://www.raywenderlich.com/ : tutoriels
 - https://developer.apple.com : swift, objective-c
+
+### GPS
+
+- pour tester une position GPS (par exemple sur un ordinateur qui n'a pas de puce GPS), on peut utiliser un fichier .gpx. Lancer le simulateur puis cliquer sur l'icône en bas à droite qui ressemble à un avion en papier
+- on doit activer le GPS quand on arrive dans la View et le supprimer quand on en sort. Apple vérifie qu'il n'est pas utilisé à outrance
+- degré de précision à fixer entre 3 km et quelques mètres. Plus la précision est grande et plus l'autonomie est impactée
+- kCLAuthorizationStatusAuthorizedWhenInUse, ne met à jour le GPS que quand l'application est ouverte
+- kCLAuthorizationStatusAuthorizedAlways, tout le temps (ex : pour RunKeeper)
+- dans info.plist ajouter la variable NSLocationWhenInUseUsageDescription pour renseigner la raison d'utilisation
+
