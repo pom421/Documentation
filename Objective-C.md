@@ -202,3 +202,8 @@ Dans Interface Builder, on gère par pixel old school alors qu'à partir d'iPhon
 
 - AppCooker (sur iPad) avec ergonomie iPhone
 - insightly (invision) (png cliquable)
+
+### Divers
+
+- http://www.raywenderlich.com/ : tutoriels
+- https://developer.apple.com : swift, objective-c
