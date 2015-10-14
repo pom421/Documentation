@@ -264,6 +264,9 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - une webview a un delegate à lui
 - une webview peut avoir des contraintes mais à l'intérieur on retrouve bien du HTML, du CSS, etc..
 - pour ne pas surcharger les applis mobiles, toutes les librairies ne sont pas automatiquement ajoutées. Il faut ajouter en import Mapkit pour les plans, CoreLocation pour le GPS, Social pour l'intégration Facebook/Twitter, lecteur audio, vidéo, etc..
+- bug de XCode : le @import Mapkit ne suffit pas pour avoir la carte. Il faut aller sur le projet dans l'éditeur (double clic sur le nom du projet qui ouvre une fenêtre de configuration, General, Linked frameworks and libraries) Clic + puis Mapkit.frameworks
+- recherche d'icônes : font awesome
+- delegate Reachability pour gérer des évènements quand on perd la connexion data ou qu'on la récupère...
 
 ### GPS
 
@@ -277,7 +280,7 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 ### Mapkit
 
 - il faut ajouter en 1x toutes les annotations qui seront visibles à l'échelle actuelle demandée par l'utilisateur
-- si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations
+- si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations. Le clustering n'est pas standar, il faut utiliser une librairire github
 
 ### Ajout d'un NavigationController à un TabBar existant
 
