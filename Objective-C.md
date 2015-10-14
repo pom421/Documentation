@@ -154,7 +154,9 @@ Gestion de bloc asynchrone en Objective-C :
     
   self.velibSearchedStationsArray = [self.velibStationsArray filteredArrayUsingPredicate:predicate];
   
-  
+- comment trier un NSArray avec NSSortDescriptor
+
+
   
 En cas d'appel asynchrone, il y a création d'un nouveau thread. 
 Il faut après récupération des résultats, demander à recharger la vue du TableView. Pour cela, on ne peut pas faire un simple [tableView reloadData] car on est sur 2 threads séparés. Plutôt, on peut faire : 
@@ -256,6 +258,12 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - http://www.raywenderlich.com/ : tutoriels
 - https://developer.apple.com : swift, objective-c
 - simulateur : pour avoir le clavier Mac en plus, faire Hardware > Keyboard > Connect hardware keyboard
+- JS webview : get UIWebview Height dans stack overflow. Permet de récupérer la hauteur de la webview pour ensuite avoir un scrollbar sur l'ensemble d'une page même si notre écran se compose de natif et de webview
+- faire une webview quand le contenu est dynamique, quand on a des liens. Faire une page web et des images dans l'application et peupler les parties dynamiques de l'application par un ws qui contient juste le html de la div dynamique
+- une webview permet aussi de simuler un navigateur (pour ne pas sortir de l'application) SFSafariVC
+- une webview a un delegate à lui
+- une webview peut avoir des contraintes mais à l'intérieur on retrouve bien du HTML, du CSS, etc..
+- pour ne pas surcharger les applis mobiles, toutes les librairies ne sont pas automatiquement ajoutées. Il faut ajouter en import Mapkit pour les plans, CoreLocation pour le GPS, Social pour l'intégration Facebook/Twitter, lecteur audio, vidéo, etc..
 
 ### GPS
 
@@ -266,3 +274,16 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - kCLAuthorizationStatusAuthorizedAlways, tout le temps (ex : pour RunKeeper)
 - dans info.plist ajouter la variable NSLocationWhenInUseUsageDescription pour renseigner la raison d'utilisation
 
+### Mapkit
+
+- il faut ajouter en 1x toutes les annotations qui seront visibles à l'échelle actuelle demandée par l'utilisateur
+- si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations
+
+### Ajout d'un NavigationController à un TabBar existant
+
+- ajouter par drag and drop à partir de la bibliothèque
+- supprimer le rootViewController
+- ctl-clic du NavigationController vers FirstViewController puis Relationship segue : root ViewController
+- suprimer le segue existant entre le TabBarController et FirstViewController
+- Ctl-clic entre TabBatController et le NaviationController puis RelationShip segue > view Controllers
+- le NavigationController self.navigationController.navigationBar.translucent = NO
