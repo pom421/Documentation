@@ -267,6 +267,7 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - bug de XCode : le @import Mapkit ne suffit pas pour avoir la carte. Il faut aller sur le projet dans l'éditeur (double clic sur le nom du projet qui ouvre une fenêtre de configuration, General, Linked frameworks and libraries) Clic + puis Mapkit.frameworks
 - recherche d'icônes : font awesome
 - delegate Reachability pour gérer des évènements quand on perd la connexion data ou qu'on la récupère...
+- AnnotationView, callOutAccessory : annotation dans la map et bulle qui s'affiche quand on clique dessus. il est possible de créer ses propres vues pour avoir un affichage particulier
 
 ### GPS
 
@@ -281,6 +282,12 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 
 - il faut ajouter en 1x toutes les annotations qui seront visibles à l'échelle actuelle demandée par l'utilisateur
 - si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations. Le clustering n'est pas standar, il faut utiliser une librairire github
+- 
+
+### Ajout d'un ViewController au storyboard
+
+- dans la bibli copier-coller un ViewController
+- créer une Cocoa classe dérivant de UIViewController et lier dans le storyboard le VC graphique et la nouvelle classe
 
 ### Ajout d'un NavigationController à un TabBar existant
 
