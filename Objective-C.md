@@ -284,6 +284,29 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations. Le clustering n'est pas standar, il faut utiliser une librairire github
 - 
 
+### CoreData 
+
+- CoreData = persistence d'objets via une base Sqlite
+- Managed object context
+- î
+- Persistente store coordinator -> Managed object model (NSManagedObject)
+- î
+- Persistant object store
+- î
+- Sqlite
+
+
+- clic sur le fichier coredataexemple.xcdatamodeld
+- ajouter les entités. Clic sur les relationship pour pouvoir ajouter la cardinalité avec le type à To Many ou To One 
+- pour générer les classes correspondantes, sélectionner l'entité puis Editor > Create NSManagedObject subclass
+- faire ok pour le bridging header (si l'on a choisit Swift)
+- dans le fichier faire les #import des .h des ressources Objectives-C pour les rendre disponibles à Swift
+- une extension permet d'ajouter des propriétés ou des méthodes à une classe existante (ex: extension de UIController). Fait par @extension en Swift ou par @interface(Classe a étendre)
+- pour qu'une classe O-C accède à swift, il faut faire #import "nomprojet-Swift.h"
+- pour qu'une classe Swift accède à une ressources O-C, il faut ajouter les .h des ressources Objective-C dans coredataexemple-Bridging-Header.h,  
+
+- id ne peut pas être le nom d'un attribut dans sqlite car c'est un mot clé dans Objective-C (utiliser identifier ou serialNumber à la place en O-C)
+
 ### Ajout d'un ViewController au storyboard
 
 - dans la bibli copier-coller un ViewController
