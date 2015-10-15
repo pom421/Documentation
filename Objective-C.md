@@ -8,6 +8,8 @@
 
 ### Éléments d'Objective-C
 
+
+- NSNumber est une classe est permet de véhiculer des informations de type int, double ou même booléen. Ensuite, il faut caster par exemple [maval boolvalue]
 - dans le .h on met l'interface (au sens java). Tout ce qui sera définit ici sera public. Les héritages se mettent ici
 - dans le .m on met l'implémentation. Les propriétés définies dans la partie @interface du .m seront privées et donc inaccessibles à l'extérieur
 - les propriétés qui commencent par "-" sont des variables d'instance
@@ -268,6 +270,7 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - recherche d'icônes : font awesome
 - delegate Reachability pour gérer des évènements quand on perd la connexion data ou qu'on la récupère...
 - AnnotationView, callOutAccessory : annotation dans la map et bulle qui s'affiche quand on clique dessus. il est possible de créer ses propres vues pour avoir un affichage particulier
+- les imports en objective-C ne comportent pas de sous "répertoires" comme des packages en java. Tout est au même niveau, même si on a mis des .h et .m dans des sous-groupes
 
 ### GPS
 
