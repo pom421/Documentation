@@ -291,10 +291,7 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - î
 - Persistente store coordinator -> Managed object model (NSManagedObject)
 - î
-- Persistant object store
-- î
-- Sqlite
-
+- Persistant object store -> connexion au fichier sqlite
 
 - clic sur le fichier coredataexemple.xcdatamodeld
 - ajouter les entités. Clic sur les relationship pour pouvoir ajouter la cardinalité avec le type à To Many ou To One 
@@ -306,6 +303,17 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 - pour qu'une classe Swift accède à une ressources O-C, il faut ajouter les .h des ressources Objective-C dans coredataexemple-Bridging-Header.h,  
 
 - id ne peut pas être le nom d'un attribut dans sqlite car c'est un mot clé dans Objective-C (utiliser identifier ou serialNumber à la place en O-C)
+- fichier .momd = structure de la base de données sqlite
+- modifier le AppDelegate.m pour modifier le nom de le base sqlite et du .momd
+
+### AppDelegate
+
+Il y a un objet transverse à tous nos VC, c'est AppDelegate. 
+
+Il est accessible par : 
+  AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+
+- applicationDocumentsDirectory : donne le répertoire que l'utilisateur a définit pour stocker des fichiers
 
 ### Ajout d'un ViewController au storyboard
 
