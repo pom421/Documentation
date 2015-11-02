@@ -15,8 +15,11 @@ L'environnement est détruit à chaque sortie de page.
     $("ul.urgent>li").css("background-color", "blue");
     # tous les frères de même niveau
     $("#ici~li").css("background-color", "purple");
-    # le frère suivant  
+    # le frère suivant de type li
     $("#ici+li").css("background-color", "yellow");
+    
+    # tous les li sous le ul sauf le 1er
+    $("ul>li+li").css("background-colo", "red"); // ou $("ul>li+li").css("background-colo", "red");
   ````
 
 ### Evènements
