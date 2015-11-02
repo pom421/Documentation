@@ -62,10 +62,26 @@ L'environnement est détruit à chaque sortie de page.
     $("#ma-liste li:nth-child(4)~li").css("background-color", "purple");
     $("#ma-liste li:nth-child(7)~li").css("background-color", "green");
     
-    # n = n° d'itération dans la boucle
+    # n = n° itération dans la boucle
     $("#ma-liste-pyjama :nth-child(2n)").css("background-color", "lightgrey");
-
-  ````
+    
+    $("#liste-rainbow :nth-child(3n)").css("background-color", "blue");
+    $("#liste-rainbow :nth-child(3n+1)").css("background-color", "gray");
+    $("#liste-rainbow :nth-child(3n+2)").css("background-color", "purple");
+ ````
+ 
+ ````js
+ 
+// ajoute un fils au sélecteur au début
+$("monselecteur").prepend()
+// ajoute un fils au sélecteur à la fin
+$("monselecteur").append()
+// ajoute un frère avant le sélecteur
+$("monselecteur").before()
+// ajoute un frère après le sélecteur
+$("monselecteur").after()
+ 
+ ````
 
 ### Evènements
 
