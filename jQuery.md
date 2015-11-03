@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 
 Ex : récupérer les images sous un div avec l'id main
 ````js
-$('img', '#main)
+$('img', '#main')
 ````
 
   **Remplacer tous les H2 par des H3**
@@ -64,7 +64,7 @@ $('img', '#main)
     $(element).closest("tr").remove();
     ````
 
-  **Récupérer le 1er td d'un tableau avec clic sur un autre td de ce tableau**
+  **Récupérer le 1er td de tableau avec clic sur un autre td de ce tableau**
   
   ````js
   var cell = $(element).closest("tr").find("td:first-of-type");
