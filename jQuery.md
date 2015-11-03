@@ -105,3 +105,23 @@ $('img', '#main')
   });
   
   ````
+  **Empêcher le fonctionnement nominal pour lien, input texte, etc..**
+  
+  ````js  
+  // pour un lien
+  $("#monUl").on("click", "a", function(e) {
+      if($("#toggle").hasClass("disabled")) {
+          e.preventDefault();
+      }
+  });
+  // pour un champ texte
+  $("#mon-form").on("keypress", "input", function(e) {
+      if(e.charCode > 48 && e.charCode < 58) {
+          console.log("on trouve ", e.charCode);
+      }
+      else {
+          e.preventDefault(); 
+      } 
+          
+  });
+ ````
