@@ -90,4 +90,3 @@ Contrairement aux autres callbacks, les callbacks des streams ne prennent qu'un 
   document.body.scrollTop = elementDom.offsetTop;
   ````
 
-    ````
