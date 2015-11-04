@@ -84,3 +84,10 @@ Contrairement aux autres callbacks, les callbacks des streams ne prennent qu'un 
   });
   ````
   
+**Scroller à un endroit de la page**
+
+  ````js
+  document.body.scrollTop = elementDom.offsetTop;
+  ````
+
+    ````
