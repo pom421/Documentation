@@ -86,3 +86,7 @@ $("monselecteur").after()
 ### Evènements
 
 ### Ajax
+
+Pour permettre à Chrome de pouvoir faire du Ajax avec le protocole file : 
+
+Dans le raccourci Chrome, ajouter à la commande --allow-file-access-from-files.
