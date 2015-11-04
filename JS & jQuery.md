@@ -90,3 +90,17 @@ $("monselecteur").after()
 Pour permettre à Chrome de pouvoir faire du Ajax avec le protocole file : 
 
 Dans le raccourci Chrome, ajouter à la commande --allow-file-access-from-files.
+
+  **Pour charger des scripts à la demande**
+  $.getScript("script.js", function callback() { ..}
+  
+  **Appel Ajax**
+  
+   $.getJSON(url, function(data) {
+      $("#meteo").text(data.query.results.channel.item.forecast[0].text);
+  });
+  
+  **Méthode chaînées utilitaire en Ajax**
+  
+  .success().fail().always();
+  
