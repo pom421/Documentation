@@ -63,3 +63,10 @@ git status
 ```
 
 Permet d'avoir des infos importantes comme la branche en cours d'utilisation ou les fichiers non commits
+
+**Problème proxy**
+
+```sh
+git config --global http.proxy http://10.154.61.3:3128
+git config --global https.proxy https://10.154.61.3:3128
+```
