@@ -21,3 +21,6 @@ Installer le package avec Preferences > Install > atom-ternjs
 Puis Packages > Atom tern js > Configure project. 
 Clic sur jQuery puis Save and restart server.
 
+### Package à tester
+
+https://atom.io/packages/atom-pair
