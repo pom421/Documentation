@@ -24,3 +24,5 @@ Clic sur jQuery puis Save and restart server.
 ### Package à tester
 
 https://atom.io/packages/atom-pair
+
+http://elijahmanor.com/github-atom-packages/
