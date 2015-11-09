@@ -26,3 +26,8 @@ Clic sur jQuery puis Save and restart server.
 https://atom.io/packages/atom-pair
 
 http://elijahmanor.com/github-atom-packages/
+
+### Problème raccourci Atom
+
+- sélection multiple : le raccourci Ctl-Shift-Up ou Down ne fonctionne pas car il est pris par Mission control. Allez dans Preferences système > Missions control et désactiver les raccourcis Ctl-Up ou Ctl-Down (ou bien remapper un nouveau raccourci)
+
