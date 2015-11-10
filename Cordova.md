@@ -22,12 +22,14 @@
 - npm config set proxy http://...
 - npm config set https-proxy http://...
 
-
-
 ````dos
 npm init
 npm install -g cordova
 npm install -g ripple-emulator
+
+npm install -g http-server
+cd Formation/angular
+http-server
 ````
 ### Divers
 - cordova.js est le script qui permet de déclencher l'évènement deviceready qui est spécifique au device. Le fichier cordova.js se retrouve par platform dans platform_www. Dans le fichier html il faut ajouter la ligne 
@@ -43,9 +45,44 @@ npm install -g ripple-emulator
 
 - ionic : angular + cordova
 - ratchett: 
+- http://mean.io/ : full stack MongodDB Express Angular NodeJS
+
+- https://github.com/doedje/jquery.soap : SOAP pour JS
+- http://deployd.com/ : moyen simple pour construire une API (WS REST)
 
 ### Cordova plugin
 
 cordova plugin add cordova-plugin-device (on pourrait ajouter un plugin en référençant un chemin en local)
 
 10.0.2.2:8000 -> pour aller à partir de l'émulateur sur la machine hôte (car il y a une VM pour l'émulateur)
+
+### Angular
+
+$scope est un singleton injecté par Angular. Cela est étonnant car le nom du paramètre est important. 
+Du coup, cela peut poser problème si l'on passe par des outils de minifications/mochisation. 
+
+Dans ce cas, remplacer la syntaxe par la suivante : 
+
+````
+phonecatApp.controller('PhoneListCtrl', function ($scope, $http) {
+  $http.get('phones/phones.json').success(function(data) {
+    $scope.phones = data;
+  });
+
+  $scope.orderProp = 'age';
+});
+````
+
+````js
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http',
+  function ($scope, $http) {
+    $http.get('phones/phones.json').success(function(data) {
+      $scope.phones = data;
+    });
+
+    $scope.orderProp = 'age';
+  }]);
+
+````
+
+Des attributs sont remplacés par Angular comme src (ng-src) ou href (ng-href). Ceci permet de ne pas avoir un "moment de flottement" pour le navigateur où l'image ne serait pas encore disponible tant que le contenu de l'attribut n'a pas été évalué par Angular.
