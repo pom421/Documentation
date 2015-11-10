@@ -38,6 +38,8 @@ http-server
 <script src="cordova.js"></script>
 ````
 
+Pour afficher une page faite pour cordova, il est nécessaire de lancer cordova emulate, cordova serve ou ripple emulate !!!
+
 - telnet : Panneau de config> Programme > Telnet
   - telnet localhost 5554 -> point d'arrêt pour l'émulateur (geo, power, sms, gsm, etc..)
   - power ac off
@@ -84,5 +86,6 @@ phonecatApp.controller('PhoneListCtrl', ['$scope', '$http',
   }]);
 
 ````
+- angular-ui -> liste de modules disponibles pour Angular. Voir le Router qui devrait être intégré à Angular 2
 
 Des attributs sont remplacés par Angular comme src (ng-src) ou href (ng-href). Ceci permet de ne pas avoir un "moment de flottement" pour le navigateur où l'image ne serait pas encore disponible tant que le contenu de l'attribut n'a pas été évalué par Angular.
