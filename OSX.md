@@ -25,3 +25,7 @@ Dans le .bashrc (par exemple)
 Clic droit sur monfichier.txt. 
 En appuyat sur Alt, l'item Copier monfichier.txt devient Copier monfichier.txt en tant que nom de chemin.
 
+**Lancer un fichier avec l'application par défaut de l'extension**
+
+Cmd-flêche bas
+
