@@ -31,6 +31,12 @@ http://elijahmanor.com/github-atom-packages/
 
 - sélection multiple : le raccourci Ctl-Shift-Up ou Down ne fonctionne pas car il est pris par Mission control. Allez dans Preferences système > Missions control et désactiver les raccourcis Ctl-Up ou Ctl-Down (ou bien remapper un nouveau raccourci)
 
+#### Installer atom comme une commande lançable à partir de la ligne de commande
+
+Ctl-Shift-P + Install shell commands. 
+
+Puis atom . dans un terminal.
+
 #### Packages
 
 - install jshint
