@@ -18,3 +18,10 @@ Dans le .bashrc (par exemple)
 	~/.bash_profile
 	~/.bash_login
 	~/.profile
+
+
+**Retrouver le chemin physique d'un fichier sous le Finder**
+
+Clic droit sur monfichier.txt. 
+En appuyat sur Alt, l'item Copier monfichier.txt devient Copier monfichier.txt en tant que nom de chemin.
+
