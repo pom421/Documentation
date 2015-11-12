@@ -12,4 +12,10 @@ npm config set registry "http://registry.npmjs.org/"
 Remarque : notez bien que le https-proxy pointe vers une url en http et pas https
 
 
+**Brunch**
 
+À installer avec les droits sudo
+
+````
+sudo npm install -g brunch
+````
