@@ -8,8 +8,8 @@
 
 - npm init
 - npm install -g cordova
-- npm install -g ripple-emulator
-- npm install -g http-server
+- npm install -g ripple-emulator # émulateur de smartphone
+- npm install -g http-server # installation d'un serveur http light pour tester appels XHR
 - cd Formation/angular
 - http-server
 
