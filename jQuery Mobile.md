@@ -11,3 +11,5 @@
 - https://build.phonegap.com : gratuit si projet public
 
 - phone gap developer : app smarpthone pour récupérer des app de Phone gap build
+
+- chrome inspect (faire chrome://inspect) pour faire du remote debugging (utiliser Safari pour une app iPhone)
