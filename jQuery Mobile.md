@@ -13,3 +13,9 @@
 - phone gap developer : app smarpthone pour récupérer des app de Phone gap build
 
 - chrome inspect (faire chrome://inspect) pour faire du remote debugging (utiliser Safari pour une app iPhone)
+
+- native droid : material design Android pour jQuery Mobile
+
+- framework 7 : "successeur" de jQuery Mobile
+ 
+- codiqa : pour faire un prototype rapide en jQuery Mobile (payant)
