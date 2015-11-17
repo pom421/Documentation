@@ -19,3 +19,22 @@
 - framework 7 : "successeur" de jQuery Mobile
  
 - codiqa : pour faire un prototype rapide en jQuery Mobile (payant)
+
+- class=ui-state-persist pour conserver le focus quand on clique sur un navbar (ne pas intégrer un navbar dans un footer...)
+
+- Nested view : ne fonctionnent plus depuis la version 1.4
+
+- JQM prend la main après l'affichage pour y mettre son traitement. Par exemple, cela a pour effet de faire perdre le focus à un input. Pour le fixer à nouveau, soit récupérer après l'évènement pagecreate, cad pageshow. Si ça ne marche pas : 
+
+````
+  setTimeout(function(){
+    $(".ui-filterable input").focus();
+  },0);
+````
+
+####Ionic
+
+- ionic package : permet de créer une app pour Android ou iOs
+- ionic creator : outil pour faire des maquettes (// codiqa)
+- ionic app view : app servant de container sur ses apps dans le cloud
+- ngcordova : plugins cordova wrappés en angular
