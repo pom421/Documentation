@@ -32,6 +32,8 @@
   },0);
 ````
 
+- table : data-role="table" data-mode="reflow" class="ui-responsive">
+
 ####Ionic
 
 - ionic package : permet de créer une app pour Android ou iOs
