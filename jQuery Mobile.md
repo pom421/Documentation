@@ -34,9 +34,24 @@
 
 - table : data-role="table" data-mode="reflow" class="ui-responsive">
 
+````
+$(window).on("orientationchange", function(e) {
+   console.log("orientationchange");
+});
+````
+À faire après le script de jquery mobile (= évènement mobileinit)
+
 ####Ionic
 
 - ionic package : permet de créer une app pour Android ou iOs
 - ionic creator : outil pour faire des maquettes (// codiqa)
 - ionic app view : app servant de container sur ses apps dans le cloud
 - ngcordova : plugins cordova wrappés en angular
+
+
+#### 
+
+- yeoman : utilise des generator. Clic sur Discovering generators
+- generator-jquery-mobile
+- yo jquery-mobile
+- https://webpack.github.io/docs/ : avenir de la gestion de modules JS 
