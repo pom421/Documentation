@@ -1,9 +1,13 @@
 #### Divers
 
-- theme roller : https://themeroller.jquerymobile.com/
+- Doc 
+ - https://api.jquerymobile.com/category/reference/ : référence des attributs data
+ - https://api.jquerymobile.com/category/widgets/ : référence des widgets
+ - http://demos.jquerymobile.com/1.4.5/ : démos de tous les widgets
+ - https://themeroller.jquerymobile.com/ : theme roller
 
 
-- data-theme : permet de préciser la nuance (entre a et z) du thème créé par 
+- data-theme : permet de préciser la nuance (entre a et z) du thème créé par Theme Roller = swatch
 - font squirrel : pour transfrormer une police en police css
 
 - font awesome ou glyphicons (mais ce dernier n'est pas SVG en mode libre de droit sauf si intégré avec Bootstrap)
