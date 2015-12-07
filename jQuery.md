@@ -43,9 +43,12 @@ $('img', '#main')
     elt.replaceWith("<h3>" + elt.text() +"</h3>");
   });
   ````
-  **Modifier le lien d'un élement a**
-  $("#lien").attr("href", "http://www.yahoo.fr");
   
+  **Modifier le lien d'un élement a**
+ ```js  
+  $("#lien").attr("href", "http://www.yahoo.fr");
+  ```
+
   **Ajouter une ligne modèle d'un tableau à ce tableau**
   
   ````js
@@ -58,11 +61,10 @@ $('img', '#main')
   
   **Supprimer la ligne du tableau**
   
-  ````js
-    $(element).parent().remove();
-    // ou mieux 
-    $(element).closest("tr").remove();
-    ````
+  ```js
+  $(element).parent().remove();
+  $(element).closest("tr").remove(); // mieux
+  ```
 
   **Récupérer le 1er td de tableau avec clic sur un autre td de ce tableau**
   
@@ -105,6 +107,17 @@ $('img', '#main')
   });
   
   ````
+  
+  **Comment mettre des gestionnaire d'évènement sur du contenu HTML dynamique?**
+
+  Un corrolaire de l'item précédent est que cela permet d'ajouter un gestionnaire sur des éléments non encore existants dans le DOM. Par exemple : 
+
+  ```js
+  $(staticAncestors).on(eventName, dynamicChild, function() {});
+  ```
+  
+  Dans cet exemple, seul staticAncestors a besoin d'être présent au moment où le gestionnaire d'évènement a été installé. 
+  
   **Empêcher le fonctionnement nominal pour lien, input texte, etc..**
   
   ````js  
