@@ -1,4 +1,4 @@
-### Installatio de Grav CMS sur OS X
+### Installation de Grav CMS sur OS X
 
 Un Mac Book est préinstallé avec un apache et PHP. 
 
