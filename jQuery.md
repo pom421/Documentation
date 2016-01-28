@@ -110,7 +110,7 @@ $('img', '#main')
   
   **Comment mettre des gestionnaire d'évènement sur du contenu HTML dynamique?**
 
-  Un corrolaire de l'item précédent est que cela permet d'ajouter un gestionnaire sur des éléments non encore existants dans le DOM. Par exemple : 
+  Un corollaire de l'item précédent est que cela permet d'ajouter un gestionnaire sur des éléments non encore existants dans le DOM. Par exemple : 
 
   ```js
   $(staticAncestors).on(eventName, dynamicChild, function() {});
@@ -232,24 +232,29 @@ Pour permettre à Chrome de pouvoir faire du Ajax avec le protocole file :
 Dans le raccourci Chrome, ajouter à la commande --allow-file-access-from-files.
 
   **Pour charger des scripts à la demande**
+  ```js
   $.getScript("script.js", function callback() { ..}
+  ```
   
   **Appel Ajax**
   
+  ```js
    $.getJSON(url, function(data) {
       $("#meteo").text(data.query.results.channel.item.forecast[0].text);
   });
-  
+  ```
   **Méthode chaînées utilitaire en Ajax**
   
+  ```js
   .success().fail().always();
+  ```
   
 **Comment savoir si une variable est bien un objet?**
 
  ```js
 typeof []
-"object" // problème pour savoir en JS si ce qu'on manipule est vraiment un objet...
-
+// problème pour savoir en JS si ce qu'on manipule est vraiment un objet...
+"object" 
 // solution jQuery : utiliser $.isPlainObject
 $.isPlainObject([]);
 false
