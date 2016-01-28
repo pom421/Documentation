@@ -244,3 +244,13 @@ Dans le raccourci Chrome, ajouter à la commande --allow-file-access-from-files.
   
   .success().fail().always();
   
+**Comment savoir si une variable est bien un objet?**
+
+ ```js
+typeof []
+"object" # problème pour savoir si ce qu'on manipule est vraiment un objet...
+$.isPlainObject([]);
+false
+$.isPlainObject({});
+true
+```
