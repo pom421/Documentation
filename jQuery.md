@@ -265,7 +265,7 @@ true
 
 **Quelle est la différence entre .attr() et .prop() ?**
 
-http://stackoverflow.com/questions/5874652/prop-vs-attr
-http://blog.jquery.com/2011/05/10/jquery-1-6-1-rc-1-released/
+- http://stackoverflow.com/questions/5874652/prop-vs-attr
+- http://blog.jquery.com/2011/05/10/jquery-1-6-1-rc-1-released/
 
 En résumé, utiliser prop si possible, cad pour les champs booléens et les propriétés qui n'existent pas dans le HTML (comme window.location). Sinon utilier attr(). Utiliser toujours .val() pour la mise à jour. 
