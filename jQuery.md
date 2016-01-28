@@ -2,6 +2,7 @@
 
 **Références**
 - [jQuery Learning Center](http://learn.jquery.com/)
+- [Types JS/JQuery](https://api.jquery.com/Types/)
 
 ----
 
