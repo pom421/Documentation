@@ -150,7 +150,7 @@ L'environnement est détruit à chaque sortie de page.
     $("h1,h2").css("color", "white");
     
     # descendant indirect
-    $("ul.urgent>li").css("background-color", "blue");
+    $("ul.urgent li").css("background-color", "blue");
     # descendant direct
     $("ul.urgent>li").css("background-color", "blue");
     # tous les frères de même niveau
