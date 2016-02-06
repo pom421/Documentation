@@ -6,6 +6,7 @@
 - http://zachbruggeman.me/github-for-cats/ : la base de github
 - http://gitref.org/index.html : référence git selon github (top!)
 - https://www.grafikart.fr/formations/git/git-flow : Une vidéo issue du tutoriel de Grafikart sur Git
+- https://www.atlassian.com/git/tutorials/setting-up-a-repository : Par Atlassian, créateur de BitBucket. De bonnes ressources pour migrer de SVN à Git (dont les workflow possibles)
 
 **Convention**
 
