@@ -8,9 +8,9 @@
 
 **Convention**
 
-	Origin : nom du remote repo par convention
-	Master : branche par défaut
-	Upstream : nom de la remote d'un repo forké 
+	origin : nom du remote repo par convention
+	master : branche par défaut
+	upstream : nom de la remote d'un repo forké 
 	origin/master : branche master du remote repo sur GH. git status se compare par rapport à elle
 
 **Workflow initial via un nouveau repo Github**
