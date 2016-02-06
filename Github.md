@@ -68,6 +68,34 @@ git log
 
 Permet d'avoir des infos importantes comme la branche en cours d'utilisation ou les fichiers non commits
 
+**Pour créer un remote repo**
+
+Si l'on veut créer un remote repo soi-même, on doit spécifier que ce dernier ne doit pas avoir de working tree. 
+C'est à dire qu'on ne pourra pas faire de git add ou de git commit et le seul moyen de faire évoluer ce repo se fera par des git push. Pour cela il faut faire un bare repo. 
+
+```sh
+# par convention, on suffixe par .git
+cd ../projet_remote.git
+git --bare init
+```
+
+**Pour créer un site documentaire**
+
+Par convention, on crée une branche gh_pages. Cette branche n'a aucun lien avec les autres branches (master, etc..) car elle ne contient pas d'artefacts de code mais des pages de documentation. Notez pour cela l'utilisation de --orphan.
+
+```sh
+git checkout --orphan gh-pages
+# Creates our branch, without any parents (it's an orphan!)
+Switched to a new branch 'gh-pages'
+git rm -rf .
+# Remove all files from the old working tree
+rm '.gitignore'
+echo "My Page" > index.html
+git add index.html
+git commit -a -m "First pages commit"
+git push origin gh-pages
+```
+
 **Problème proxy**
 
 ```sh
