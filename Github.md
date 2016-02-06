@@ -8,10 +8,10 @@
 
 **Convention**
 
-	Origin : nom de la remote par défaut d'un repo
+	Origin : nom du remote repo par convention
 	Master : branche par défaut
 	Upstream : nom de la remote d'un repo forké 
-	origin/master : branche principale de la remote sur GH. git status se compare par rapport à elle
+	origin/master : branche master du remote repo sur GH. git status se compare par rapport à elle
 
 **Workflow initial via un nouveau repo Github**
 
@@ -59,7 +59,10 @@ git push origin --delete autre-fonctionnalite # on pousse les modifications en r
 **Divers**
 
 ```sh
+# pour savoir les fichiers trackés (cad stage) et ceux qui ne le sont pas
 git status
+# pour voir l'historique des commits
+git log
 ```
 
 Permet d'avoir des infos importantes comme la branche en cours d'utilisation ou les fichiers non commits
