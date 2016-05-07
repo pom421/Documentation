@@ -51,6 +51,7 @@ git checkout autre-fonctionnalite # autre-fonctionnalite devient la branche cour
 touch titi.sh
 git commit -a -m "ajout de fonctionnalite"
 git pull # pour récupérer les modifications du repo distant
+# éventuellement on a besoin de faire : git pull origin master
 git push origin autre-fonctionnalite # On pousse au serveur la nouvelle branche sur la remote de GH
 // pull request sur GH
 git checkout master # on revient sur la branche master
