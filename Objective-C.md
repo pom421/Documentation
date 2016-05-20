@@ -178,13 +178,18 @@ info.plist = manifest en Android
 
 #### Distribution en recette
 
-- avec un compte développeur à 99e/an on a à disposition 100 iphones maximum autorisés pour déployer l'application (hors de l'App store). Chaque iPhone doit être référencé sur le compte (UDID). nKey UDID, application pour récupérer l'UDID de l'iPhone
+- avec un compte développeur à 99€/an on a à disposition 100 iphones maximum autorisés pour déployer l'application (hors de l'App store). Chaque iPhone doit être référencé sur le compte (UDID). nKey UDID, application pour récupérer l'UDID de l'iPhone
+- développer avec un compte entreprise coûte 300€/an pour un nombre illimité de devices
 
 - on peut déployer via iTunes ou plus simplement via une référence sur internet (ou intranet) via un serveur web sous HTTPS. Il faut que l'application soit signée avec le certificat attribué par Apple lors de la création de l'application. Les n° d'Iphone autorisés sont intégrés à l'application. Ou TestFlight qui permet de recetter. Télécharger une application pour iPhone ou iPad. 
 
 - Tips : 
   - http://www.git-tower.com/blog/xcode-cheat-sheet
   - http://spin.atomicobject.com/2014/03/23/xcode-keyboard-shortcuts/
+
+#### Qu'est-ce qu'un ViewController?
+
+C'est l'équivalent d'une Activity d'Android. 
 
 #### Comment ajouter une classe ViewController en association à un élément ViewController du Storyboard?
 
@@ -195,7 +200,7 @@ Ex de convention de nommage pour la fermeture d'un ViewController :
 
 ## Vue d'ensemble du développement en XCode
 
-- le storyboard regroupe les vues graphiques et la coordination entre elles. 
+- le storyboard regroupe les vues graphiques et la coordination entre elles (interactions entre les ViewController). C'est comme si tous les layouts d'Android se trouvaient au même endroit.  
 - tips : faire les liens avec son code et les éléments graphiques. Cliquer sur un bouton ou un label dans le ViewController à partir du Storyboard. 
 - Ctl-Clic à partir d'un élément graphique (ex : un label) et le mettre dans la partie interface de ViewController.m (ou ViewController.h pour le mettre en public) pour récupérer un Outlet (prise, permettant de récupérer l'objet graphique pour faire un .text par exemple) ou un Action pour réagir à un évènement. 
 
@@ -331,3 +336,11 @@ Il est accessible par :
 - suprimer le segue existant entre le TabBarController et FirstViewController
 - Ctl-clic entre TabBatController et le NaviationController puis RelationShip segue > view Controllers
 - le NavigationController self.navigationController.navigationBar.translucent = NO
+
+
+### Comment ajouter des constantes?
+
+Soit : 
+- fichier constantes.h à récupérer via un define à la compilation
+- méthode statique
+
