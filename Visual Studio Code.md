@@ -12,3 +12,7 @@
 - Shift-Cmd-U : Toggle output
 - Shift-Cmd-V : Markdown preview
 - Cmd-K V : Markdown preview dans l'éditeur de côté
+- Cmd-Shift-E : Toggle "perspective" explorateur
+- Cmd-Shift-F : Toggle "perspective" recherche
+- Ctl-Shift-G : Toggle "perspective" Git
+- Cmd-Shift-D : Toggle "perspective" debug
