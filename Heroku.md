@@ -1,5 +1,19 @@
 ## Workflow
 
+### Référence
+
+- https://devcenter.heroku.com/articles/how-heroku-works : comprendre le fonctionnement technique de Heroku
+- https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction : Getting started Node
+- https://devcenter.heroku.com/articles/architecting-apps : architecture
+
+### installation
+
+- installer le Heroku Toolbelt pour OS X https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+
+```sh
+heroku login
+``
+
 ```sh
 # on rapatrie sur son poste un repo git de github
 git clone https://github.com/heroku/node-js-getting-started.git
@@ -8,6 +22,13 @@ cd node-js-getting-started
 
 # permet d'ajouter un remote git nommé heroku
 heroku create 
+
+MacBook-Air-de-Pierre-Olivier:node-js-getting-started pom$ git remote -v
+heroku	https://git.heroku.com/shrouded-spire-64809.git (fetch)
+heroku	https://git.heroku.com/shrouded-spire-64809.git (push)
+origin	https://github.com/heroku/node-js-getting-started.git (fetch)
+origin	https://github.com/heroku/node-js-getting-started.git (push)
+
 
 # Procfile définit la commande à lancer
 cat > Procfile << EOF
