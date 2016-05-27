@@ -15,6 +15,10 @@
 	upstream : nom de la remote d'un repo forké 
 	origin/master : branche master du remote repo sur GH. git status se compare par rapport à elle
 
+**Diagnostic**
+
+- lister toutes les remotes : git remote -v
+
 **Workflow initial via un nouveau repo Github**
 
 ```sh
