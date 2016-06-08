@@ -16,6 +16,7 @@
 - Cmd-Shift-F : Toggle "perspective" recherche
 - Ctl-Shift-G : Toggle "perspective" Git
 - Cmd-Shift-D : Toggle "perspective" debug
+- Ctl-< : Toggle terminal intégré
 
 ### Utilitaire chemin fichier
 
