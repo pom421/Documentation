@@ -17,6 +17,7 @@
 - Ctl-Shift-G : Toggle "perspective" Git
 - Cmd-Shift-D : Toggle "perspective" debug
 - Ctl-< : Toggle terminal intégré
+- Cmd-= : Toggle commentaire de ligne
 
 ### Utilitaire chemin fichier
 
