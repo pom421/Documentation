@@ -15,11 +15,15 @@ var age: Int?
 if let age2 = age {
   print(age2)
 }
-
 ```
-
 
 Pour avoir les méthodes de String qui viennent d'Objective C (par exemple Substring), il faut faire : 
 ```
 import Foundation
 ```
+
+Différence tuple et dictionnary:
+
+Un tuple a éventuellement des propriétés nommés ce qui le rapproche des dictionnaires. Mais avec les différences : 
+- les noms des propriétés ne peuvent pas être calculées contrairement au Dictionnary
+- les tuples sont créés une fois pour toutes contrairement au Dictionnary qui peut évoluer au fil du temps
