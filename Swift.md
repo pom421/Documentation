@@ -38,3 +38,29 @@ a ?? b
 
 - pas besoin de break à la fin de chaque cas. Mais si l'on veut éviter le break automatique, on peut utiliser fallthrough
 
+En Swift, on peut avoir 3 types d'instance : 
+
+- instance de classe
+- instance d'enum
+- instance de struct
+
+Différentes class et struct 
+
+Les classes sont passées par référence. 
+Les struct sont passés pas valeur (recopie).
+
+### Struct 
+
+Un struct doit utiliser le mot clé mutating si on modifie l'état de l'instance. 
+Il peut également rendre une nouvelle instance (à l'initiative de lui-même!!)
+
+### Enum
+
+Enum peut être associé à une valeur qui est d'un type simple (string, int, etc..)
+Par défaut, la valeur sera en String du même nom que la clé de l'enum
+
+On peut récupérer la valeur d'un Enum à partir de sa valeur par : 
+
+```swift
+AppleProduct(rawValue: "iPhone")
+```
