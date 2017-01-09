@@ -1,4 +1,18 @@
-### Swift (Romain)
+### Swift (Romain Asnar)
 
 La résolution des types se fait à la compilation (et augmente le temps de compilation par rapport à Objective C)
 
+Gestion des librairies : Pod ou Carthage (l'enfer à gérer à la main)
+
+- AppDelegate.swift : le main de l'app
+- ViewController.swift : le premier contrôleur
+- storyboard : la partie visuelle
+- Assets.xcassets : les images, etc..
+- LaunchScreen.storyboard : storyboard pour le 1er écran (branding, afficher très rapidement un écran à l'utilisateur)
+- info.plist : fichier de configuration
+- Test.xcdatamodeld : "PhpMyAdmin" like pour Core Data 
+
+- fichier "projet" (en cliquant directement dans le navigateur XCode sur le projet)
+  - Deployment target : version minimum sur lequel on veut que ça tourne. On peut utiliser des fonctionnalités de 10 et mettre
+  en Deployment target 7. Il faudra dans le code ajouter des conditions pour ne pas lancer des fonctionnalités si l'OS du
+  périphérique ne les permettent pas.
