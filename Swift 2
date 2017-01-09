@@ -37,4 +37,16 @@ Viper : Nouvelle architecture pour iOS
 Playground avec MVVM :
 https://gist.github.com/romsi/9dee6214b06db33ac02fde0464ba0c5d
 
+Ajout de localisation
+
+clic sur le projet
+en haut à gauche, clic sur la liste de choix et se positionner sur le nom du projet
+Dans localizations, ajouter fr (dans Main.storyboard)
+
+Pour externaliser même en anglais, sur le storyboard, à droite clic sur le 1er onglet et cliquer sur Localization english avec localizable strings.
+tab
+
 TableView & CollectionView : le CollectionView n'oblige pas à prendre toute la largeur du périphérique
+
+Content hugging priority/Content compression resistance priority : permet de savoir qui gagne en priorité sur le contenu textuel
+(par exemple 3 boutons qui s'affichent horizontalement)
