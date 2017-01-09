@@ -2,7 +2,7 @@
 
 La résolution des types se fait à la compilation (et augmente le temps de compilation par rapport à Objective C)
 
-Gestion des librairies : Pod ou Carthage (l'enfer à gérer à la main)
+Gestion des librairies : Pod ou Carthage (l'enfer à gérer à la main). Fichier podfile (~= package.json)
 
 - AppDelegate.swift : le main de l'app
 - ViewController.swift : le premier contrôleur
@@ -16,3 +16,25 @@ Gestion des librairies : Pod ou Carthage (l'enfer à gérer à la main)
   - Deployment target : version minimum sur lequel on veut que ça tourne. On peut utiliser des fonctionnalités de 10 et mettre
   en Deployment target 7. Il faudra dans le code ajouter des conditions pour ne pas lancer des fonctionnalités si l'OS du
   périphérique ne les permettent pas.
+
+AppDelegate.swift
+
+- cycle de vie de l'application : quand l'application rentre en background, etc..
+
+États : active, background, foreground ("zombie“) qui nécessite de redémarrer l'app, terminée
+
+Sandboxing : les données de chaque app sont compartimentées. On peut faire communiquer des app entre elles par des app groups.
+
+Les ViewController en iOS font du travail de contrôleur mais aussi une grosse partie de la vue.
+
+MVC => problème les ViewController deviennent massifs
+
+MVC => MVVM : le contrôleur contient un Model-View qui se limite au formatage des données du model. Cela permet également de
+factoriser ce formatage entre plusieurs contrôleurs.
+
+Viper : Nouvelle architecture pour iOS
+
+Playground avec MVVM :
+https://gist.github.com/romsi/9dee6214b06db33ac02fde0464ba0c5d
+
+TableView & CollectionView : le CollectionView n'oblige pas à prendre toute la largeur du périphérique
