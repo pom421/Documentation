@@ -62,3 +62,24 @@ on perdrait alors la navigation.
 
 Il faut ajouter un segue de type "root view controller" entre le Navigation controller et le Table view controller" (clic sur le bouton 
 jaune du controller dans Interface builder puis à droite, dernier onglet "flêche" pour voir les segues)
+
+Un switch permet de switch sur le type d'une instance
+
+```swift
+switch cell {
+case let postCell as PostTableViewCell: 
+  postCell.nameLabel.text = "Test 1"
+```
+
+## Accessibilité et UX 
+
+Ne pas faire de menu hamburger. La Tab bar est à préférer. De plus au niveau développeur, c'est beaucoup plus simple.
+zone de clic minimum : 44x44 px
+Global tint pour colorer d'une même façon tous les boutons
+Adapter les contraintes, hugging et compression pour prévoir un item qui puisse être diminué (par exemple une image). Mais
+ce n'est pas aux développeurs de dire être minimisé mais à la MOA (ou designers).
+
+Interface
+
+- Tab bar : menu du bas avec les onglets. Avantage : on sait toujours où l'on est (icone sélectionné)
+- Navigation bar : menu en haut, lié à un Navigation Controller particulier
