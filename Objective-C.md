@@ -206,7 +206,7 @@ Ex de convention de nommage pour la fermeture d'un ViewController :
 
 ### Concepts
 
-- Une View est un composant graphique. On entend par là que c'est un artefact à dessinner à un moment donné qui contient donc une largeur et une hauteur
+- Une View est un composant graphique. On entend par là que c'est un artefact à dessiner à un moment donné qui contient donc une largeur et une hauteur
 - une view peut posséder d'autre vue à l'intérieur d'elle-même. Dans ce cas et si on laisse Clip subviews dans l'onget Attributes de InterfaceBuilder, on voit qu'une sous vue qui dépasserait d'une vue mère (appelée Superview) n'affiche pas l'éventuel résidu en dehors de l'espace de la super vue. Si on décoche "Clip Subviews", cependant ce qui dépasse éventuellement est affiché, ceci pour des raisons de performance. Mais aucun évènement ne sera détecté au niveau de ce qui dépasse (même si Clip subviews est décoché)
 - en particulier un Label, un EditView sont des vues. Un TableViewCell est une vue!!
 - un contrôleur est le traitement qui est lancé au démarrage. Il peut piloter une ou plusieurs vues (par exemple un TableView d'un côté et un SearchBar de l'autre)
