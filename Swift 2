@@ -108,6 +108,19 @@ Pour éviter les nil en Swift, on peut utiliser :
 
 - guard let data = data, error == nill else { ...} => le nouveau data est forcément non nil dans le else et errror est aussi non nil
 
+guard let et if let permettent de faire des comparaisons et éventuellement d'affecter des variables qui seront forcément différents de nil
+
+**Debugger**
+
+Dans les variables, faire print "var". Ensuite, on peut faire po error! pour avoir le contenu de l'erreur
+
+Le Main thread ou Queue main est celui qui est dédié pour la partie graphique. Il faut faire des opérations IO dans un autre thread
+(par exemple URLSession.shared.dataTask fait l'opération dans un autre thread) puis revenir au main thread pour modifier l'UI
+en conséquence (avec DispatchQueue.main.async).
+
+ObjectMapper : pour mapper un objet JSON en objet swift
+
+
 
 
 
