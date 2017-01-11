@@ -94,3 +94,9 @@ Interface
 
 - Tab bar : menu du bas avec les onglets. Avantage : on sait toujours où l'on est (icone sélectionné)
 - Navigation bar : menu en haut, lié à un Navigation Controller particulier
+
+
+CollectionView : plus compliqué à gérer que TableView mais permet de faire des animations sexys comme Google Photos
+
+Closure : équivalent callback
+Ref : http://fuckingclosuresyntax.com/
