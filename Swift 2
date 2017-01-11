@@ -100,3 +100,15 @@ CollectionView : plus compliqué à gérer que TableView mais permet de faire de
 
 Closure : équivalent callback
 Ref : http://fuckingclosuresyntax.com/
+
+NSCache : permet de mettre en cache n'importe quel type d'objet. Par exemple, pour stocker des images récupérées via une requête réseau.
+
+Pour éviter les nil en Swift, on peut utiliser : 
+- object = String?, utilisation avec object! => on assure au compilateur que ce ne sera jamais utilisé (à éviter si possible)
+
+- guard let data = data, error == nill else { ...} => le nouveau data est forcément non nil dans le else et errror est aussi non nil
+
+
+
+
+
