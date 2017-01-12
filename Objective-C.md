@@ -289,8 +289,7 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 ### Mapkit
 
 - il faut ajouter en 1x toutes les annotations qui seront visibles à l'échelle actuelle demandée par l'utilisateur
-- si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations. Le clustering n'est pas standar, il faut utiliser une librairire github
-- 
+- si l'utilisateur dézoome beaucoup, il y a trop d'annotations donc on utilise la technique de clustering qui utilise des petites loupes pour rassembler une zone d'annotations. Le clustering n'est pas standard, il faut utiliser une librairire github
 
 ### CoreData 
 
