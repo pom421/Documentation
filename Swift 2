@@ -147,7 +147,15 @@ Ex:
 - post.setValue(postJSON.name, forKeyPath: "group.user.name")
 
 
+##CloudKit
+Sauver dans le cloud des informations. Une sorte de base de données sous forme de clé/valeur.
+Record types => Définition d'un type de document
+Default zone => là où se trouve les documents par défaut. Possibilité de créer des zones spécifiques
 
+Public data/private data => les données sont publiques ou privées au sens de l'application, il n'y a pas d'API qui permettraient
+de récupérer ces données "publiques"
+
+UUID.uuidString() => génération d'un UID
 
 
 
