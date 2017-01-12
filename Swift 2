@@ -158,6 +158,19 @@ de récupérer ces données "publiques"
 UUID.uuidString() => génération d'un UID
 
 
+### Raccourcis et tips XCode
+
+- Cmd-shift-o : pour ouvrir n'importe quel fichier ou méthode, attribut, etc..
+- Cmd-shift-/ : pour commenter/décommenter
+- scheme : pour configurer différemment dev, staging, prod
+- 2 éditeurs : sur la partie droite, on peut choisir classes mères, appelants, etc.. ou bien passer en manuel. Attention l'explorateur
+de gauche ne permet pas d'ouvrir l'éditeur de droite
+- blame GIT en cliquant sur le 4ème bouton en haut à droite (en partant de la droite)
+- ajouter des scripts dans Build phases
+- Ctl-Shift-F : pour rechercher un terme
+
+
+
 
 
 
