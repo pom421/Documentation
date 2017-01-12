@@ -139,6 +139,18 @@ Pour débuguer Core data:
 - avant de run, choisir Core data editor, dans les préférences choisir le répertoire 
 /Users/formation/Library/Developer/CoreSimulator/Devices
 
+Possibilité d'utiliser setValue forKey ou setValue forKeyPath. Dans le 1er cas, on modifie un champ direct de la classe. Dans le 
+2ème cas, on peut modifier des objets en relation 
+
+Ex: 
+- post.setValue(postJSON.name, forKey: "name")
+- post.setValue(postJSON.name, forKeyPath: "group.user.name")
+
+
+
+
+
+
 
 
 
