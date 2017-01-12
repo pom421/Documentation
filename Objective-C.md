@@ -293,6 +293,8 @@ On peut mettre des contraintes par rapport à une Superview ou à un autre compo
 
 ### CoreData 
 
+![https://github.com/pom421/Documentation/blob/master/schema_core_data.png?raw=true](https://github.com/pom421/Documentation/blob/master/schema_core_data.png?raw=true)
+
 - CoreData = persistence d'objets via une base Sqlite
 - Managed object context
 - î
