@@ -133,8 +133,11 @@ NSManagedObject
 - entity
 - context
 
+Pour débuguer Core data:
 
-
+- télécharger https://github.com/ChristianKienle/Core-Data-Editor
+- avant de run, choisir Core data editor, dans les préférences choisir le répertoire 
+/Users/formation/Library/Developer/CoreSimulator/Devices
 
 
 
