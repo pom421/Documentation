@@ -15,9 +15,11 @@
 - les propriétés qui commencent par "-" sont des variables d'instance
 - les propriétés commençant par "+" sont des variables de classe
 - les classes méres sont renseignés ainsi : 
+
   ```objective-c
   @interface QuestionListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
   ```
+  
 - les classes mère peuvent avoir des méthodes optionnelles (@optionnal) ou obligatoires (@required) à remplir pour les classes filles
 
 - @property : 
@@ -32,6 +34,7 @@
 -  @import CoreLocation; -> pour importer un fichier d'un framework
 
 - invocation d'une méthode : 
+
   ```objective-c
   [beagle feedWithSnack:snack andWater:YES]
   ```
@@ -56,6 +59,7 @@
 - @"Une chaine de caractère standard"
 
 - NSArray  
+
   ```objective-c
     _questionsArray = [[NSArray alloc] initWithObjects:
     @"Quelle est la capitale de la Turquie?",
@@ -75,9 +79,11 @@
     // NSLog est une fonction (et pas une méthode de classe). C'est pour cela qu'elle ne respecte pas la syntaxe crochet
     NSLog(@"Ma question est : %@ et son nombre de point(s) est %d", question.title, question.points);
   ```
+  
   ```objective-c
   [NSString stringWithFormat:@"(%d pts)", question.points];
   ```
+  
   ```objective-c
    // 2 styles pour les boucles
     for (Question *question in _questionsArray) {
