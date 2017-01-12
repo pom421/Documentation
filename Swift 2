@@ -120,6 +120,21 @@ en conséquence (avec DispatchQueue.main.async).
 
 ObjectMapper : pour mapper un objet JSON en objet swift
 
+self.tableView.reloadData => pour recharger l'ensemble des données de la table. Il existe des méthodes qui recharge uniquement un ou 
+une liste de row.
+
+##Core Data
+
+NSEntityDescription 
+- name
+- context
+
+NSManagedObject
+- entity
+- context
+
+
+
 
 
 
