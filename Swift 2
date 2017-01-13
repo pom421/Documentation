@@ -17,8 +17,6 @@ Gestion des librairies : Pod ou Carthage (l'enfer à gérer à la main). Fichier
   en Deployment target 7. Il faudra dans le code ajouter des conditions pour ne pas lancer des fonctionnalités si l'OS du
   périphérique ne les permettent pas.
 
-AppDelegate.swift
-
 - cycle de vie de l'application : quand l'application rentre en background, etc..
 
 États : active, background, foreground ("zombie“) qui nécessite de redémarrer l'app, terminée
@@ -37,24 +35,32 @@ Viper : Nouvelle architecture pour iOS
 Playground avec MVVM :
 https://gist.github.com/romsi/9dee6214b06db33ac02fde0464ba0c5d
 
-Ajout de localisation
+##Localization
 
-clic sur le projet
-en haut à gauche, clic sur la liste de choix et se positionner sur le nom du projet
-Dans localizations, ajouter fr (dans Main.storyboard)
+- clic sur le projet
+- en haut à gauche, clic sur la liste de choix et se positionner sur le nom du projet
+- dans localizations, ajouter fr (dans Main.storyboard)
 
 Pour externaliser même en anglais, sur le storyboard, à droite clic sur le 1er onglet et cliquer sur Localization english avec localizable strings.
 tab
 
-TableView & CollectionView : le CollectionView n'oblige pas à prendre toute la largeur du périphérique
+Interface
 
-Content hugging priority/Content compression resistance priority : permet de savoir qui gagne en priorité sur le contenu textuel
-(par exemple 3 boutons qui s'affichent horizontalement)
-
+- Tab bar : menu du bas avec les onglets. Avantage : on sait toujours où l'on est (icone sélectionné)
+- Navigation bar : menu en haut, lié à un Navigation Controller particulier
+- Navigation Controller : un début de navigation où le système va gérer les retour en arrière avec l'icone <
+- CollectionView : plus compliqué à gérer que TableView mais permet de faire des animations sexys comme Google Photos
 
 ##Storyboard
 
-Ajout d'un Navigatio Controller : 
+- Content hugging priority/Content compression resistance priority : permet de savoir qui gagne en priorité sur le contenu textuel
+(par exemple 3 boutons qui s'affichent horizontalement)
+- TableView & CollectionView : le CollectionView n'oblige pas à prendre toute la largeur du périphérique
+- les liens (IBOutlet, segue, root view controller pour se relier à un NavigationViewController) se fait avec Ctl clic d'une view sur un VC
+- il faut penser à **ajouter la classe Swift au ViewContoller** du Storyboard
+- pour les **items de TableViewController** il faut penser à mettre le nom de l'item
+
+Ajout d'un Navigation Controller 
 - on crée un début de navigation, i.e. une suite d'écran qui vont naviguer les uns après les autres et la possibilité de revenir. 
 Les classes Swift qu'on va coder vont correspondre aux écrans, pas au Navigation Controller lui même qui est géré par le système.
 La flêche (entry point) pourrait très bien être placé directement sur le premier écran et pas sur le Navigation Controller mais 
@@ -62,6 +68,8 @@ on perdrait alors la navigation.
 
 Il faut ajouter un segue de type "root view controller" entre le Navigation controller et le Table view controller" (clic sur le bouton 
 jaune du controller dans Interface builder puis à droite, dernier onglet "flêche" pour voir les segues)
+
+##TableViewController
 
 Surcharge des fonctions
     
@@ -72,7 +80,9 @@ Surcharge des fonctions
     # donne la hauteur que doit prendre la celulle+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
+##Swift
 
+**switch**
 
 Un switch permet de switch sur le type d'une instance
 
@@ -82,26 +92,12 @@ case let postCell as PostTableViewCell:
   postCell.nameLabel.text = "Test 1"
 ```
 
-## Accessibilité et UX 
-
-Ne pas faire de menu hamburger. La Tab bar est à préférer. De plus au niveau développeur, c'est beaucoup plus simple.
-zone de clic minimum : 44x44 px
-Global tint pour colorer d'une même façon tous les boutons
-Adapter les contraintes, hugging et compression pour prévoir un item qui puisse être diminué (par exemple une image). Mais
-ce n'est pas aux développeurs de dire être minimisé mais à la MOA (ou designers).
-
-Interface
-
-- Tab bar : menu du bas avec les onglets. Avantage : on sait toujours où l'on est (icone sélectionné)
-- Navigation bar : menu en haut, lié à un Navigation Controller particulier
-
-
-CollectionView : plus compliqué à gérer que TableView mais permet de faire des animations sexys comme Google Photos
+**Closure**
 
 Closure : équivalent callback
 Ref : http://fuckingclosuresyntax.com/
 
-NSCache : permet de mettre en cache n'importe quel type d'objet. Par exemple, pour stocker des images récupérées via une requête réseau.
+**Éviter les nil en Swift**
 
 Pour éviter les nil en Swift, on peut utiliser : 
 - object = String?, utilisation avec object! => on assure au compilateur que ce ne sera jamais utilisé (à éviter si possible)
@@ -110,13 +106,26 @@ Pour éviter les nil en Swift, on peut utiliser :
 
 guard let et if let permettent de faire des comparaisons et éventuellement d'affecter des variables qui seront forcément différents de nil
 
+
+## Accessibilité et UX 
+
+- ne pas faire de menu hamburger. La Tab bar est à préférer. De plus au niveau développeur, c'est beaucoup plus simple.
+- zone de clic minimum : 44x44 px
+- global tint pour colorer d'une même façon tous les boutons
+- adapter les contraintes, hugging et compression pour prévoir un item qui puisse être diminué (par exemple une image). Mais
+ce n'est pas aux développeurs de dire être minimisé mais à la MOA (ou designers).
+
+## NSCache
+
+NSCache permet de mettre en cache n'importe quel type d'objet. Par exemple, pour stocker des images récupérées via une requête réseau.
+
 **Debugger**
 
 Dans les variables, faire print "var". Ensuite, on peut faire po error! pour avoir le contenu de l'erreur
 
 Le Main thread ou Queue main est celui qui est dédié pour la partie graphique. Il faut faire des opérations IO dans un autre thread
 (par exemple URLSession.shared.dataTask fait l'opération dans un autre thread) puis revenir au main thread pour modifier l'UI
-en conséquence (avec DispatchQueue.main.async).
+en conséquence (avec **DispatchQueue.main.async**).
 
 ObjectMapper : pour mapper un objet JSON en objet swift
 
@@ -224,5 +233,25 @@ de gauche ne permet pas d'ouvrir l'éditeur de droite
     }
 
 ```
+
+## Delegate
+
+Delegate = Listner en java. Exemple : UIImagePickerController fait du code et à un moment délègue son traitement à notre delegate.
+
+## kUTTypeMovie
+
+Tout ce qui commence par k est l'ancienne notation pour les constantes en objective C
+
+UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+- création d'une BarButton avec une action
+@IBAction func openCamera(sender: UIBarButtonItem!)
+
+- dans info.plist : NSPhotoLibraryUSageDescription => ajouter une description
+
+## Simulateur
+
+- Debug > Location > Custom location pour simuler sa position quelque part
+- alt souris pour faire les actions à 2 doigts (p.ex. pour zoomer/dézoomer sur une carte)
 
 
