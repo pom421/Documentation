@@ -35,7 +35,7 @@ Viper : Nouvelle architecture pour iOS
 Playground avec MVVM :
 https://gist.github.com/romsi/9dee6214b06db33ac02fde0464ba0c5d
 
-##Localization
+## Localization
 
 - clic sur le projet
 - en haut à gauche, clic sur la liste de choix et se positionner sur le nom du projet
@@ -51,7 +51,7 @@ Interface
 - Navigation Controller : un début de navigation où le système va gérer les retour en arrière avec l'icone <
 - CollectionView : plus compliqué à gérer que TableView mais permet de faire des animations sexys comme Google Photos
 
-##Storyboard
+## Storyboard
 
 - Content hugging priority/Content compression resistance priority : permet de savoir qui gagne en priorité sur le contenu textuel
 (par exemple 3 boutons qui s'affichent horizontalement)
@@ -69,7 +69,7 @@ on perdrait alors la navigation.
 Il faut ajouter un segue de type "root view controller" entre le Navigation controller et le Table view controller" (clic sur le bouton 
 jaune du controller dans Interface builder puis à droite, dernier onglet "flêche" pour voir les segues)
 
-##TableViewController
+## TableViewController
 
 Surcharge des fonctions
     
@@ -106,6 +106,9 @@ Pour éviter les nil en Swift, on peut utiliser :
 
 guard let et if let permettent de faire des comparaisons et éventuellement d'affecter des variables qui seront forcément différents de nil
 
+**kXXX**
+
+Tout ce qui commence par k est l'ancienne notation pour les constantes en objective C (ex. kUTTypeMovie)
 
 ## Accessibilité et UX 
 
@@ -132,7 +135,9 @@ ObjectMapper : pour mapper un objet JSON en objet swift
 self.tableView.reloadData => pour recharger l'ensemble des données de la table. Il existe des méthodes qui recharge uniquement un ou 
 une liste de row.
 
-##Core Data
+## Core Data
+
+Notion de contexte. On peut faire un contexte par écran mais il est plus simple de faire un contexte unique pour toute l'application.
 
 NSEntityDescription 
 - name
@@ -142,14 +147,13 @@ NSManagedObject
 - entity
 - context
 
-Pour débuguer Core data:
+**Pour débuguer Core data**
 
 - télécharger https://github.com/ChristianKienle/Core-Data-Editor
 - avant de run, choisir Core data editor, dans les préférences choisir le répertoire 
 /Users/formation/Library/Developer/CoreSimulator/Devices
 
-Possibilité d'utiliser setValue forKey ou setValue forKeyPath. Dans le 1er cas, on modifie un champ direct de la classe. Dans le 
-2ème cas, on peut modifier des objets en relation 
+Possibilité d'utiliser setValue forKey ou setValue forKeyPath. Dans le 1er cas, on modifie un champ direct de la classe. Dans le 2ème cas, on peut modifier des objets en relation 
 
 Ex: 
 - post.setValue(postJSON.name, forKey: "name")
@@ -161,8 +165,7 @@ Sauver dans le cloud des informations. Une sorte de base de données sous forme 
 Record types => Définition d'un type de document
 Default zone => là où se trouve les documents par défaut. Possibilité de créer des zones spécifiques
 
-Public data/private data => les données sont publiques ou privées au sens de l'application, il n'y a pas d'API qui permettraient
-de récupérer ces données "publiques"
+Public data/private data => les données sont publiques ou privées au sens de l'application, il n'y a pas d'API qui permettraient de récupérer ces données "publiques"
 
 UUID.uuidString() => génération d'un UID
 
@@ -177,6 +180,7 @@ de gauche ne permet pas d'ouvrir l'éditeur de droite
 - blame GIT en cliquant sur le 4ème bouton en haut à droite (en partant de la droite)
 - ajouter des scripts dans Build phases
 - Ctl-Shift-F : pour rechercher un terme
+- Cmd-Alt-Shift-) : pour indenter sur un clavier AZERTY
 
 ### MapKit
 
@@ -238,11 +242,8 @@ de gauche ne permet pas d'ouvrir l'éditeur de droite
 
 Delegate = Listner en java. Exemple : UIImagePickerController fait du code et à un moment délègue son traitement à notre delegate.
 
-## kUTTypeMovie
 
-Tout ce qui commence par k est l'ancienne notation pour les constantes en objective C
-
-UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class PictureViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 - création d'une BarButton avec une action
 @IBAction func openCamera(sender: UIBarButtonItem!)
