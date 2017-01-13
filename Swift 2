@@ -169,10 +169,60 @@ de gauche ne permet pas d'ouvrir l'éditeur de droite
 - ajouter des scripts dans Build phases
 - Ctl-Shift-F : pour rechercher un terme
 
+### MapKit
 
+- ajouter la capability MapKit (clic sur projet, choisir le bon target)
+- création d'une classe Cocoa qui dérive de UIViewContoller => MapViewController
+- dans la classe 
+  - import MapKit
+  - internal class MapViewController : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+- création d'un ViewContoller + ajout d'un MapKitView à l'intérieur
+- control sur le TabBarController vers le nouveau ViewController + IBOutlet
 
+- associer dans le story board le ViewContrller avec cette classe
+- clic sur le MapKitView et cliquer sur un onglet sur User Location (pour pouvoir afficher une annotation pour la position de l'utilisateur)
+  
+- CLLocationManager permet de gérer les demandes de permission d'accès au GPS
 
+```swift
 
+    override func viewDidLoad() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let annotation = MKPointAnnotation()
+        annotation.title = "Autre bar"
+        annotation.subtitle = "À ne pas manquer"
+        let lat = CLLocationDegrees(48.91)
+        let long = CLLocationDegrees(2.5)
+        
+        annotation.coordinate = CLLocationCoordinate2DMake(lat2, long2)
+        
+        self.mapView.addAnnotation(annotation)
+        //self.mapView.addAnnotations([annotation, annotation2])
+   }
+   
+   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.mapView.showsUserLocation = true
+        default:
+            break
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        print("nouvelle localisation de l'utilisateur")
+        
+        let center = userLocation.coordinate
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        self.mapView.setRegion(region, animated: true)
+    }
+
+```
 
 
