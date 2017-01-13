@@ -1,4 +1,4 @@
-### Swift (Romain Asnar)
+### Swift - Romain Asnar - 13 janvier 2017
 
 La résolution des types se fait à la compilation (et augmente le temps de compilation par rapport à Objective C)
 
