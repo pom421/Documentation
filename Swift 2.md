@@ -60,6 +60,13 @@ Interface
 - il faut penser à **ajouter la classe Swift au ViewContoller** du Storyboard
 - pour les **items de TableViewController** il faut penser à mettre le nom de l'item
 
+À faire pour un TableView : 
+- on crée une classe MaClasseTableViewController. On l'associe au VC du storyboard
+- clic sur le TableView du storyboard. Aller dans l'onget Relations. On doit trouver des outlets pour delegate et datasource. On clic et on positionne sur le bouton jaune (dans le storyboard) correspondant à la nouvelle classe MaClasseTableViewController
+- penser à ajouter le bon identifier dans les cellules
+- dynamic ou static cell
+- choisir le type du table view cell dans l'onglet
+
 Ajout d'un Navigation Controller 
 - on crée un début de navigation, i.e. une suite d'écran qui vont naviguer les uns après les autres et la possibilité de revenir. 
 Les classes Swift qu'on va coder vont correspondre aux écrans, pas au Navigation Controller lui même qui est géré par le système.
