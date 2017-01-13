@@ -262,4 +262,24 @@ class PictureViewController: UIImagePickerControllerDelegate, UINavigationContro
 - Debug > Location > Custom location pour simuler sa position quelque part
 - alt souris pour faire les actions à 2 doigts (p.ex. pour zoomer/dézoomer sur une carte)
 
+## Déployer sur l'App Store
 
+Pour trouver son Appler Id, aller sur l'App Store et aller tout en bas pour trouver l'email
+
+- clean projet (ctl shift k)
+- changer le n° du build dans Projet > General
+- scheme : run en mode release (optimisation du code)
+  - rq : mode release + debug : on a le minimum, on ne voit plus les variables
+- si tout va bien, clean, choisir Generic iOS device puis Product > Archive
+- Validate => valide en local. Peut planter si : 
+  - info.plist n'est pas bon
+  - le bundle id ne correspond pas à une app enregistrée sur iTunes connect
+  - les AppIcons ne sont pas bonnes => makeappicon.com
+
+Project > Build settings
+Laisser tout sur automatique pour éviter des conflits sur les systèmes de gestion de version
+
+La validation peut prendre 10 minutes et dire que telle App Icon est manquante...
+Quand ça passe, l'ipa est sur l'App Store mais pas encore publié. 
+
+On va ensuite sur iTunes Connect. Et on fait une soumission pour vraiment publier sur l'App Store.
