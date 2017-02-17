@@ -705,7 +705,7 @@ Dexdump existe aussi mais c'est un outil de bas niveau peu intuitif.
 git archive --format zip --output ~/mon-projet.zip master
 ```
 
-**Q : SQL sur fichier csv **
+**Peut-on exploiter un fichier csv avec des commandes SQL?**
 
 [Q](https://github.com/harelba/q) est un outil permettant d'utiliser la syntaxe SQL sur un fichier csv. Grâce à cela, toutes les fonctions du SQL sont disponibles (count, order by, etc..).
 
