@@ -473,7 +473,7 @@ ajouter les lignes suivantes
 
 ---
 
-** Pour passer du JRE 5 au JRE 7**
+**Pour passer du JRE 5 au JRE 7**
 
 Pour avoir la liste des jre installés sur un serveur (et pouvoir switcher sur une autre version)
 
@@ -607,21 +607,6 @@ Debugger l'objet class.getClassLoader et voir les repositoryURL
 **Voir des informations de consommation de ressource de la JVM**
 
 jconsole.exe dans le répertoire bin du JRE (p. ex. le JRE 7)
-
-**Eclipse après le choix du workspace se plante. Il marche seulement avec eclipse -clean **
-
-Sous Mars (entre autre), on peut avoir le problème que le workspace ne marche qu'en mode clean.
-À la fermeture du workspace, on a le message suivant :
-
-"Job found still running after platform shutdown. Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.epp.internal.logging.aeri.ui.log.ProblemsDatabaseUpdateJob
-". Il faut utiliser l'option clearPersistedState.
-
-```sh
-# sous OS X
-/Applications/Eclipse.app/Contents/MacOS/eclipse -clean -clearPersistedState
-```
-
-Malheureusement pas plus pérenne... À compléter!
 
 **Ajouter la gestion des composants JMX dans Eclipse**
 
