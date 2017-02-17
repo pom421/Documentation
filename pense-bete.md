@@ -1,6 +1,4 @@
----
-title: Pense bête
----
+	#Linux #Java #Eclipse #Android #Tomcat #SQL #SOAP #Reseau #Oracle #SVN
 
 **Afficher les fichiers/répertoires triés par date rétroactive**
 
@@ -14,7 +12,7 @@ ls -lrt
 find / -name tnsnames.ora
 ```
 
-**Trouver les fichiers contenant un certain motif (recherche récursive) **
+**Trouver les fichiers contenant un certain motif (recherche récursive)**
 
 ```sh
 find . -type f -print | xargs grep motif-a-trouver
