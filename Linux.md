@@ -86,9 +86,9 @@ La manière la plus concise de créer un fichier :
   ou pour avoir une confirmation
   find . -iname "*.swp" -ok rm {} ';' 
   ````
--ctime : la date de dernier changement des méta data de l'inode (ex: changement permission, etc..) Au début, la date de création du fichier. 
--atime : la date de dernier accès
--mtime : la date de dernière modification
+- attribut -ctime : la date de dernier changement des méta data de l'inode (ex: changement permission, etc..) Au début, la date de création du fichier. 
+- attribut -atime : la date de dernier accès
+- attribut -mtime : la date de dernière modification
 
 -size : avec date en byte c, k, M ou G. Avec + ou - pour donner des intervalles
 -type f ou d : pour le type soit fichier soit répertoire
