@@ -48,7 +48,7 @@ http://wiki.bash-hackers.org/syntax/pe
 - ${PARAMETER:OFFSET:LENGTH} : renvoie la chaîne à partir de OFFSET (1er caractère = 0)
 - ${PARAMETER:OFFSET:LENGTH} : idem sur x caractères
 
-##Commandes
+## Commandes
 
 Les commandes ont toujours accès à 3 flux toujours ouverts : 
 - /dev/stdin : avec le file descripteur 0
