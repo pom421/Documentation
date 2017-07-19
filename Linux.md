@@ -1,3 +1,5 @@
+Voir http://wiki.bash-hackers.org/start : montre toutes les syntaxes {}, [], [[ ]], etc.. 
+
 ### Quote
 
 - ' est le quoting fort : rien n'est interprété
@@ -146,3 +148,7 @@ find . -name "toto*.txt" # récupère toto.txt, toto1.txt, etc..
 ls | grep "toto.*.txt" fichier # pour chercher le motif toto.txt, toto1.txt dans le fichier
 ````
 
+Référence :
+- http://wiki.bash-hackers.org/commands/classictest
+- getopts : http://wiki.bash-hackers.org/howto/getopts_tutorial
+- récupérer les arguments : http://mywiki.wooledge.org/BashFAQ/035
