@@ -148,7 +148,7 @@ find . -name "toto*.txt" # récupère toto.txt, toto1.txt, etc..
 ls | grep "toto.*.txt" fichier # pour chercher le motif toto.txt, toto1.txt dans le fichier
 ````
 
-##Expression arithmétique et expansion arithmétique
+### Expression arithmétique et expansion arithmétique
 
 L'opérateur (( )) dit à Bash qu'on passe sur des opérations numériques et non plus chaîne de caractères. 
 (( )) permet d'évaluer une expression arithmétique et de rendre 1 en cas d'erreur et 0 en cas de succès. Il faut le voir comme une sortie de commande Linux. Il est souvent utilisé pour valoriser une variable (équivalent du let). Cette variable ne doit pas être préfixée par $. Attention, pour rendre une valeur arithmétique, il faut passer par $(( )). 
@@ -171,7 +171,7 @@ Cela ne fonctionne que sur les nombres. On ne peut utliser une ternaire pour aff
 
 À noter qu'à l'intérieur de (( )), on se retrouve dans un environnement proche du C. On peut alors ajouter des espaces entre les opérateurs sans qu'ils soient pris en compte.
 
-##Typeset
+### Typeset
 
 Typeset permet de définir une variable et son type (-a pour un tableu, -f pour une fonction).
 Dans une fonction, définir une variable avec typeset rend la variable locale à la fonction. On peut aussi utiliser le mot clé local pour cela.
