@@ -19,15 +19,20 @@ show collections # affiche la liste des collections pour la base de données sé
 
 ## Read
 
+```
 db.movies.find()
 db.movies.find().pretty()
+```
 
 ## Updage
 
 Utiliser l'opérateur $set pour mettre à jour un champ. Sinon, l'objet sera mis exactement à l'état de l'objet envoyé à update
 
 ```
+# changer l'année du film Vertigo
 db.movies.update({title: "Vertigo"}, {$set: { year: 1959 }}) 
+
+# changer en ajoutant s'il n'existe pas les infos du film Alien
 db.movies.update({ title: "Alien" }, 
   {$set:
     { 
@@ -44,20 +49,17 @@ db.movies.update({ title: "Alien" },
     }
   }, 
 { upsert: true })
+
+# Ajouter pour tous les films avec la country USA un champ oscars
+db.movies.update(
+	{ country: "USA" },
+  { $set: 
+  	{
+    	oscars: 1
+    }
+  },
+  { multi: 1}
+)
 ```
 
-db.movies.update({ title: "Alien" }, 
-    { 
-      year: 1979,
-      country: "USA",
-      genre: ["science-fiction"],
-      director: 
-        {
-          "last-name": "Scott", 
-          "first-name": "Ridley",
-          "birth-date": "1937-11-30",
-          "nationality": "GB"
-        }
-    }, 
-{ upsert: true })
-
+NB: marche aussi sans set
