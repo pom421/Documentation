@@ -26,7 +26,7 @@ db.movies.find()
 db.movies.find().pretty()
 ```
 
-## Updage
+## Update
 
 Utiliser l'opérateur $set pour mettre à jour un champ. Sinon, l'objet sera mis exactement à l'état de l'objet envoyé à update
 
@@ -133,7 +133,6 @@ db.movies.update(
 
 # supprimer l'actor qui a comme first-name Tom
 db.movies.update(   { title: "Alien" },   { $pull:  { "actors" : { "first_name": "Tom" } }   } )
-```
 
 # pour restaurer un fichier bson (le serveur doit être lancé)
 mongorestore -d formation -c movies movies.bson
@@ -189,3 +188,4 @@ db.movies.find({title: { $regex: "matrix", $options: 'i'}}, { title: 1 })
 
 # récupère les documents dont le champ summary n'existe pas
 > db.movies.find({ summary: { $exists: 0 }}, { title: 1, year: 1})
+```
