@@ -135,3 +135,57 @@ db.movies.update(
 db.movies.update(   { title: "Alien" },   { $pull:  { "actors" : { "first_name": "Tom" } }   } )
 ```
 
+# pour restaurer un fichier bson (le serveur doit être lancé)
+mongorestore -d formation -c movies movies.bson
+
+# affiche les title (ainsi que _id par défaut)
+db.movies.find({year: 1997}, { title: "" ).pretty()
+# pour supprimer de l'affichage _id
+db.movies.find({year: 1997}, { title: 1, _id: 0 }).pretty()
+
+
+db.movies.find(
+	{ year: {
+  		$in: [1997, 1998, 1999, 2000]
+  	}
+  },
+  { title: "" }
+)
+
+# trouver tous les films de 1997 à 2000
+> db.movies.find({ year: { $gte: 1997, $lte: 2000 }}, { title: "", year: "", _id: 0 }).sort({ year: 1 })
+
+# tri sur annee (rétroactivement) puis par titre
+> db.movies.find({ year: { $gte: 1997, $lte: 2000 }}, { title: "", year: "", _id: 0 }).sort({ year: -1, title: 1 })
+
+# retrouver les films de 1997 de genre drama
+> db.movies.find({$and: [{ year: 1997}, { genre: "drama" }]}, { title: "" }).sort({ year: -1, title: 1 })
+
+# ou bien 
+> db.movies.find({ year: 1997, genre: "drama"}, {title: ""})
+
+# trouver les films entre 1997 et 2000 de genre drama
+> db.movies.find({ year: { $gte: 1997, $lte: 2000 }, genre: "drama"}, {title: ""})
+
+# trouver tous les films après 2000
+> db.movies.find({ year: { $gt: 2000 }}, {title: "", year: "", _id: 0}).sort({ year: 1, title: 1 })
+
+# opérateur not
+> db.movies.find({ year: { $not : { $gt: 2000 } }}, {title: "", year: "", _id: 0}).sort({ year: 1, title: 1 })
+
+# trouver les films avec Bruce Willis en tant qu'acteur 
+> db.movies.find({ "actors.last_name": "Willis", "actors.first_name": "Bruce"  }, { title: 1, year: 1}).sort(title: 1)
+
+# avec regex implicite
+> db.movies.find({ title: /matri*/i }, { title: 1 })
+> db.movies.find({ title: /matrix^/i }, { title: 1 })
+
+# avec regex explicite
+db.movies.find({title: { $regex: "matrix", $options: 'i'}}, { title: 1 })
+
+# opérateur exists permet ici de ne prendre que les documents qui ont bien un champ summary mais qu'il est null. 
+# NB : après un unset, le champ est complètement supprimé (il n'est pas à null)
+> db.movies.find({ summary: { $exists: 1, $eq: null }}, { title: 1, year: 1})
+
+# récupère les documents dont le champ summary n'existe pas
+> db.movies.find({ summary: { $exists: 0 }}, { title: 1, year: 1})
