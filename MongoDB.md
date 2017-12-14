@@ -227,4 +227,36 @@ nb_movies_by_genre
 { "_id" : "Action", "value" : 11 }
 { "_id" : "drama", "value" : 17 }
 
+# faire un mapReduce pour avoir les films par année et par genre
+> var map = function() { emit({ year: this.year, genre: this.genre }, 1) }
+> var reduce = function(key, values) { return Array.sum(values) }
+> db.movies.mapReduce(map, reduce, { out: "nb_movies_by_year_and_genre" })
+> show collections
+movies
+nb_movies_by_genre
+nb_movies_by_year_and_genre
+> db.nb_movies_by_year_and_genre.find().sort({ value: -1 })
+{ "_id" : { "year" : 1988, "genre" : "drama" }, "value" : 3 }
+{ "_id" : { "year" : 1990, "genre" : "drama" }, "value" : 3 }
+{ "_id" : { "year" : 1994, "genre" : "Action" }, "value" : 2 }
+{ "_id" : { "year" : 1997, "genre" : "crime" }, "value" : 2 }
+{ "_id" : { "year" : 1999, "genre" : "Fantastique" }, "value" : 2 }
+{ "_id" : { "year" : 2003, "genre" : "Science-fiction" }, "value" : 2 }
+{ "_id" : { "year" : 1954, "genre" : "Suspense" }, "value" : 1 }
+{ "_id" : { "year" : 1958, "genre" : "drama" }, "value" : 1 }
+{ "_id" : { "year" : 1959, "genre" : "Suspense" }, "value" : 1 }
+
+# Version avec aggregate
+> db.movies.aggregate([ { $group: { "_id": "$genre", nb_movies_per_genre : { $sum: 1 } } }, { $out: "agg_nb_movies_per_genre" } ])
+> show collections
+agg_nb_movies_per_genre
+movies
+nb_movies_by_genre
+nb_movies_by_year_and_genre
+> db.agg_nb_movies_per_genre.find().sort({ "nb_movies_per_genre": -1 })[0]
+{ "_id" : "drama", "nb_movies_per_genre" : 17 }
+
+# idem en filtrant sur les films après 2000
+> db.movies.aggregate([ { $match: { year: { $gt: 2000}  } }, { $group: { "_id": "$genre", nb_movies_per_genre : { $sum: 1 } } }, { $out: "agg_nb_movies_per_genre_match" } ])
+
 ```
