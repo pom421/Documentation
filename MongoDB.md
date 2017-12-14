@@ -188,4 +188,43 @@ db.movies.find({title: { $regex: "matrix", $options: 'i'}}, { title: 1 })
 
 # récupère les documents dont le champ summary n'existe pas
 > db.movies.find({ summary: { $exists: 0 }}, { title: 1, year: 1})
+
+# ajoute un champ oscar sans valeur pour l'id 27 (on peut mettre aussi bien null que undefined)
+> db.movies.update({ "_id": 27 }, { $set: { oscars: undefined } })
+
+# ajoute un champ oscar à 1 pour l'id 31
+> db.movies.update({ "_id": 31 }, { $set: { oscars: 1 } })
+
+# incrémente oscar de 2 pour tous les films français qui ont déjà une valeur numérique ($ne: null prend bien en compte les valeurs null ou undefined)
+> db.movies.update({ country: "FR", oscars: { $exists: true, $ne: null } }, { $inc: { oscars: 2 } })
+
+# trouver les films qui commencent par le
+> db.movies.find({ title: /^le/i }, { year: true, title: true, genre: true}) 
+
+```
+
+## MapReduce
+
+```
+> var map = function() { emit(this.genre, 1) }
+> var reduce = function(key, values) { return Array.sum(values) }
+> db.movies.mapReduce(map, reduce, { out: "nb_movies_by_genre" })
+> show collections
+movies
+nb_movies_by_genre
+
+> db.nb_movies_by_genre.find().sort({ value: 1 })
+{ "_id" : "romance", "value" : 1 }
+{ "_id" : "Fantastique", "value" : 2 }
+{ "_id" : "Guerre", "value" : 2 }
+{ "_id" : "Suspense", "value" : 2 }
+{ "_id" : "Western", "value" : 3 }
+{ "_id" : "ComÃ©die", "value" : 4 }
+{ "_id" : "Horreur", "value" : 4 }
+{ "_id" : "Thriller", "value" : 5 }
+{ "_id" : "crime", "value" : 6 }
+{ "_id" : "Science-fiction", "value" : 8 }
+{ "_id" : "Action", "value" : 11 }
+{ "_id" : "drama", "value" : 17 }
+
 ```
