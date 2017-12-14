@@ -259,4 +259,13 @@ nb_movies_by_year_and_genre
 # idem en filtrant sur les films après 2000
 > db.movies.aggregate([ { $match: { year: { $gt: 2000}  } }, { $group: { "_id": "$genre", nb_movies_per_genre : { $sum: 1 } } }, { $out: "agg_nb_movies_per_genre_match" } ])
 
+# idem en ajoutant pour chaque ligne le tableau des titres de film
+> db.movies.aggregate([ { $match: { year: { $gt: 2000}  } }, { $group: { "_id": "$genre", nb_movies_per_genre : { $sum: 1 }, films : { $push: "$title" }}} , { $out: "agg_nb_movies_per_genre_match_push" } ])
+
+# trouver l'année moyenne d'un genre (l'âge d'or d'un genre)
+> db.movies.aggregate([ { $group: { "_id": "$genre", avg_per_year__per_genre : { $avg : "$year" }} } , { $out: "agg_avg_year_genre" } ])
+
+
 ```
+
+$lookup : pseudo jointure possible entre 2 collections. Possible uniquement pour les aggrégations.
