@@ -24,6 +24,11 @@ show collections # affiche la liste des collections pour la base de données sé
 ```
 db.movies.find()
 db.movies.find().pretty()
+# affiche le 1er élément et applique un pretty
+db.movies.findOne()
+# affiche les 5 premiers éléments
+db.movies.find().limit(5).pretty()
+
 ```
 
 ## Update
@@ -268,4 +273,41 @@ nb_movies_by_year_and_genre
 
 ```
 
+# Index
+
+>Test sur la base sirenes de data.gouv
+
+```
+db.etablissements.createIndex({ siren: 1 })
+# ne marche pas avec le fichier récupéré de data.gouv
+db.etablissements.createIndex({ siren: 1, nic: 1 }, { unique: true, name: "index_siren_nic"}) 
+> db.etablissements.createIndex({ "entreprise.nomen_long" : 1 }, { name: "index_nomen_long" })
+> db.etablissements.find({ entreprise.nomen_long: "24EME" }).pretty()
+# stats d'exécution
+> db.etablissements.find({ "entreprise.nomen_long": "24EME" }).explain("executionStats")
+        "executionStats" : {
+                "executionSuccess" : true,
+                "nReturned" : 1,
+                "executionTimeMillis" : 0,
+                "totalKeysExamined" : 1, => parcourt d'un index
+                "totalDocsExamined" : 1, => 
+# création d'un index full text afin de rechercher (insensible à la casse, etc..)
+> db.etablissements.createIndex({ "entreprise.nomen_long": "text", siren: "text" })
+
+# l'index texte est unique par collection donc on doit supprimer l'index texte courant avant de le recréer
+> db.etablissements.dropIndex("entreprise.nomen_long_text_siren_text")
+
+# création d'un index full text sur plusieurs champs string avec un poids différent 
+> db.etablissements.createIndex({ "entreprise.nomen_long": "text", "caracteristiques_economiques.libapet": "text" }, { "default_language": "french", weights: { "entreprise.nomen_long": 2 } })
+
+> db.etablissements.find({ $text: { $search: "24eme" }}, { siren: true, nic: true, caracteristiques_economiques.libapen })
+
+# recherche avec casse exacte
+> db.etablissements.find({ $text: { $search: "24EME", $caseSensitive: true }}, { siren: true, nic: true, "entreprise.nomen_long": true, "caracteristiques_economiques.libapet": true })
+
+# récupération d'un élément sur l'index text (comme il n'y en a qu'un, pas besoin de préciser le champ du document) et affichage du score trouvé
+> db.etablissements.find({ $text: { $search: "24eme"}}, { "entreprise.nomen_long": 1, score: { $meta: "textScore" }}).sort({ score: { $meta: "textScore" } })
+
+
+```
 $lookup : pseudo jointure possible entre 2 collections. Possible uniquement pour les aggrégations.
