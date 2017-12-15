@@ -1,5 +1,12 @@
 # MongoDB
 
+##Points forts de MongoDB
+
+- performance (en particulier avec le map/reduce)
+- big data (jusqu'à des peta octets de données)
+- haute dispo avec les replica set
+- partitionnement (= éclatement) des données sur plusieurs noeuds via le sharding
+
 Outil web : http://genghisapp.com/
 
 ## Installation
@@ -446,5 +453,123 @@ formation:PRIMARY> rs.status()
                         "configVersion" : 4
                 }
 
+# création d'une variable de config pour prioriser la machine avec le port 21017
+# dans le client mongo (sur le noeud primary)
+var config = rs.config()
+config.members[0].priority = 2
+rs.reconfig(config)
+rs.config()
+{
+        "_id" : "formation",
+        "version" : 5,
+        "protocolVersion" : NumberLong(1),
+        "members" : [
+                {
+                        "_id" : 0,
+                        "host" : "poste102:27017",
+                        "arbiterOnly" : false,
+                        "buildIndexes" : true,
+                        "hidden" : false,
+                        "priority" : 2, # modification de 1 en 2
+                        "tags" : {
+
+                        },
+                        "slaveDelay" : NumberLong(0),
+                        "votes" : 1
+                },
+# on relance le serveur :27017
+mongod --port 27017 --replSet formation --dbpath /mnt/libre/db1  
+
+# au bout de quelques secondes, il redevient primary !!
+
+```
+
+## Sharding
+
+```
+# création d'un conf serveur pour le sharding. Le replica est obligatoire depuis la version 3.2 de Mongo (même si ici on n'aura qu'un seul serveur de conf server)
+root@poste102:~# mongod --port 27001 --configsvr --replSet pythagore --dbpath /mnt/libre/confServ1/
+
+# création de 3 shards dans le système de sharding
+root@poste102:/mnt/libre# mongod --port 27020 --shardsvr --dbpath /mnt/libre/shard1/
+root@poste102:/mnt/libre# mongod --port 27021--shardsvr --dbpath /mnt/libre/shard2
+root@poste102:/mnt/libre# mongod --port 27022--shardsvr --dbpath /mnt/libre/shard3
+
+# client vers le confserver
+root@poste102:/mnt/libre# mongo --port 27001 
+> rs.initiate() # initialisation du replica set
+
+# création du mongos avec le lien vers le confServer
+mongos --port 27017 --configdb pythagore/poste102:27001
+
+# connexion client vers mongos (port 27017)
+# ajout des 3 shards
+mongos> sh.addShard("poste102:27020")
+mongos> sh.addShard("poste102:27021")
+mongos> sh.addShard("poste102:27022")
+sh.status() 
+--- Sharding Status --- 
+  sharding version: {
+        "_id" : 1,
+        "minCompatibleVersion" : 5,
+        "currentVersion" : 6,
+        "clusterId" : ObjectId("5a33e4eeb07a4ab73545047e")
+  }
+  shards:
+        {  "_id" : "shard0000",  "host" : "poste102:27020",  "state" : 1 }
+        {  "_id" : "shard0001",  "host" : "poste102:27021",  "state" : 1 }
+        {  "_id" : "shard0002",  "host" : "poste102:27022",  "state" : 1 }
+
+# création de 100 000 enregistrements de test
+mongos> for (var i = 0; i< 100000; i++) { db.test.insert({ name: "utilisateur " + i, created_at: new Date()}) }
+# redéfinition de la taille des chunks (par défaut 64 Mo, ici à 1 Mo)
+mongos> use config
+db.settings.save({ _id: "chunksize", value: 1 })
+
+mongos> db.settings.find()
+{ "_id" : "chunksize", "value" : 1 }
+
+use test
+# activation du sharding
+mongos> sh.enableSharding("test")
+mongos> sh.status()
+--- Sharding Status --- 
+  databases:
+        {  "_id" : "test",  "primary" : "shard0000",  "partitioned" : true }
+
+# création de la clé de partitionnement sur le champ nom en mode Hash sharding
+mongos> db.test.createIndex({ name: "hashed" })
+
+# on lance le mode de sharding hashed 
+mongos> sh.shardCollection("test.test", { name: "hashed" })
+{ "collectionsharded" : "test.test", "ok" : 1 }
+
+mongos> sh.status()
+--- Sharding Status --- 
+  sharding version: {
+        "_id" : 1,
+        "minCompatibleVersion" : 5,
+        "currentVersion" : 6,
+        "clusterId" : ObjectId("5a33e4eeb07a4ab73545047e")
+  }
+  shards:
+        {  "_id" : "shard0000",  "host" : "poste102:27020",  "state" : 1 }
+        {  "_id" : "shard0001",  "host" : "poste102:27021",  "state" : 1 }
+        {  "_id" : "shard0002",  "host" : "poste102:27022",  "state" : 1 }
+  databases:
+        {  "_id" : "test",  "primary" : "shard0000",  "partitioned" : true }
+                test.test
+                        shard key: { "name" : "hashed" }
+                        unique: false
+                        balancing: true
+                        chunks:
+                                shard0000       5
+                                shard0001       5
+                                shard0002       4
+                        { "name" : { "$minKey" : 1 } } -->> { "name" : NumberLong("-7819502203177866461") } on : shard0001 Timestamp(2, 0) 
+                        { "name" : NumberLong("-7819502203177866461") } -->> { "name" : NumberLong("-6409122695248397646") } on : shard0002 Timestamp(3, 0) 
+                        { "name" : NumberLong("-6409122695248397646") } -->> { "name" : NumberLong("-4979193205818503347") } on : shard0001 Timestamp(4, 0) 
+
+mongos> 
 
 ```
