@@ -7,6 +7,10 @@
 - haute dispo avec les replica set
 - partitionnement (= éclatement) des données sur plusieurs noeuds via le sharding
 
+## Référence de la formation
+Jean-Baptiste Le Métayer 24ème
+https://github.com/24eme/formationmongodb
+
 Outil web : http://genghisapp.com/
 
 ## Installation
@@ -570,6 +574,24 @@ mongos> sh.status()
                         { "name" : NumberLong("-7819502203177866461") } -->> { "name" : NumberLong("-6409122695248397646") } on : shard0002 Timestamp(3, 0) 
                         { "name" : NumberLong("-6409122695248397646") } -->> { "name" : NumberLong("-4979193205818503347") } on : shard0001 Timestamp(4, 0) 
 
-mongos> 
+mongos> db.test.find({ name: "utilisateur 15" }).explain("executionStats")
+        "executionStats" : {
+                "nReturned" : 1,
+                "executionTimeMillis" : 0,
+                "totalKeysExamined" : 1,
+                "totalDocsExamined" : 1,
+                "executionStages" : {
+                        "stage" : "SINGLE_SHARD",
+                        "nReturned" : 1,
+                        "executionTimeMillis" : 0,
+                        "totalKeysExamined" : 1,
+                        "totalDocsExamined" : 1,
+                        "totalChildMillis" : NumberLong(0),
+                        "shards" : [
+                                {
+                                        "shardName" : "shard0001", # on est sur le shard0001
+                                        "executionSuccess" : true,
+                                        "executionStages" : {
+                                                "stage" : "SHARDING_FILTER",
 
 ```
