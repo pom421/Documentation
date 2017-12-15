@@ -272,6 +272,7 @@ nb_movies_by_year_and_genre
 
 
 ```
+$lookup : pseudo jointure possible entre 2 collections. Possible uniquement pour les aggrégations.
 
 # Index
 
@@ -308,6 +309,142 @@ db.etablissements.createIndex({ siren: 1, nic: 1 }, { unique: true, name: "index
 # récupération d'un élément sur l'index text (comme il n'y en a qu'un, pas besoin de préciser le champ du document) et affichage du score trouvé
 > db.etablissements.find({ $text: { $search: "24eme"}}, { "entreprise.nomen_long": 1, score: { $meta: "textScore" }}).sort({ score: { $meta: "textScore" } })
 
+```
+
+##Indexation géospatiale
+
+API du gouvernement qui rend une cordonnée GPS à partir d'une adresse postale (utilise BANO)
+
+http://api-adresse.data.gouv.fr/search/?q=11%20rue%20du%20faubourg%20poissini%C3%A8re%2075005%20paris
 
 ```
-$lookup : pseudo jointure possible entre 2 collections. Possible uniquement pour les aggrégations.
+# création d'un index géospatial de type 2dsphere (amélioration par rapport à Mongo 2.2 qui utilisait 2d, coordonnées à plat)
+# sparse à true veut dire qu'on n'indexe pas les documents qui ont des champs à null
+> db.etablissements.createIndex({ localisation: "2dsphere", "caracteristiques_economiques.apet700"}, { sparse: true })
+
+# récupération des restaurants les plus proche de notre coordonée GPS du 9ème arrondissement dans un rayon de 100m
+# 5610A", "5610B", "5610C sont les champs activités définissant des restaurants de type fast food à gastronomique
+> db.etablissements.find({ localisation: { $near: { $geometry: { type: "Point", coordinates: [2.348752, 48.876626] }, $maxDistance: 100 } }, "caracteristiques_economiques.apet700": { $in: [ "5610A", "5610B", "5610C" ]} }).pretty()
+
+http://geojson.io => permet de voir sur une carte des points au formation GeoJSON
+```
+# Réplication
+
+```
+# simulation sur un même ordi de 3 noeuds faisant partie du replica set formation (non encore créé)
+mongod --port 27017 --replSet formation --dbpath /mnt/libre/db1
+mongod --port 27018 --replSet formation --dbpath /mnt/libre/db2
+mongod --port 27019 --replSet formation --dbpath /mnt/libre/db3
+
+# connexion avec un client sur le 1er noeud
+mongo --port 27017
+# création du replica set
+> rs.initiate()
+formation:SECONDARY>  # changement du prompt. Il se met par défaut en tant que noeud secondaire
+# après le hearbeat, il se rend compte qu'il est seul et il se met donc en tant que noeud primaire
+formation:PRIMARY> 
+# ajout des autres noeuds en tant que réplicat
+formation:PRIMARY> rs.add("poste102:27018")
+formation:PRIMARY> rs.add("poste102:27019")
+
+formation:PRIMARY> rs.status()
+{
+        "set" : "formation",
+        "date" : ISODate("2017-12-15T13:14:01.422Z"),
+        "myState" : 1,
+        "term" : NumberLong(1),
+        "heartbeatIntervalMillis" : NumberLong(2000),
+        "optimes" : {
+                "lastCommittedOpTime" : {
+                        "ts" : Timestamp(1513343634, 1),
+                        "t" : NumberLong(1)
+                },
+                "appliedOpTime" : {
+                        "ts" : Timestamp(1513343634, 1),
+                        "t" : NumberLong(1)
+                },
+                "durableOpTime" : {
+                        "ts" : Timestamp(1513343634, 1),
+                        "t" : NumberLong(1)
+                }
+        },
+        "members" : [
+                {
+                        "_id" : 0,
+                        "name" : "poste102:27017",
+                        "health" : 1,
+                        "state" : 1,
+                        "stateStr" : "PRIMARY",
+                        "uptime" : 993,
+                        "optime" : {
+                                "ts" : Timestamp(1513343634, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2017-12-15T13:13:54Z"),
+                        "electionTime" : Timestamp(1513342932, 2),
+                        "electionDate" : ISODate("2017-12-15T13:02:12Z"),
+                        "configVersion" : 3,
+                        "self" : true
+                },
+                {
+                        "_id" : 1,
+                        "name" : "poste102:27018",
+                        "health" : 1,
+                        "state" : 2,
+                        "stateStr" : "SECONDARY",
+                        "uptime" : 195,
+                        "optime" : {
+                                "ts" : Timestamp(1513343634, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDurable" : {
+                                "ts" : Timestamp(1513343634, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2017-12-15T13:13:54Z"),
+                        "optimeDurableDate" : ISODate("2017-12-15T13:13:54Z"),
+                        "lastHeartbeat" : ISODate("2017-12-15T13:14:00.246Z"),
+                        "lastHeartbeatRecv" : ISODate("2017-12-15T13:14:00.241Z"),
+                        "pingMs" : NumberLong(0),
+                        "syncingTo" : "poste102:27017",
+                        "configVersion" : 3
+                },
+	...
+
+# connexion sur un noeud secondaire
+mongo --port 27019
+formation:SECONDARY> show dbs
+2017-12-15T14:31:03.465+0100 E QUERY    [thread1] Error: listDatabases failed:{
+        "ok" : 0,
+        "errmsg" : "not master and slaveOk=false",
+        "code" : 13435,
+        "codeName" : "NotMasterNoSlaveOk"
+} :
+formation:SECONDARY> show dbs
+admin      0.000GB
+formation  0.000GB
+local      0.000GB
+
+# il faut activer la lecture sur le noeud secondaire
+formation:SECONDARY> rs.slaveOk()
+
+# création d'un arbitre
+root@poste102:~# mongod --port 27020 --replSet formation --dbpath /mnt/libre/dbArbitre/
+# sur le primaire, ajout de l'arbitre (boolean isArbitre en dernière position de add)
+formation:PRIMARY> rs.add("poste102:27020", true)
+formation:PRIMARY> rs.status()
+                {
+                        "_id" : 3,
+                        "name" : "poste102:27020",
+                        "health" : 1,
+                        "state" : 7,
+                        "stateStr" : "ARBITER",
+                        "uptime" : 12,
+                        "lastHeartbeat" : ISODate("2017-12-15T13:39:06.139Z"),
+                        "lastHeartbeatRecv" : ISODate("2017-12-15T13:39:03.153Z"),
+                        "pingMs" : NumberLong(0),
+                        "configVersion" : 4
+                }
+
+
+```
