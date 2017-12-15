@@ -1,6 +1,6 @@
 # MongoDB
 
-##Points forts de MongoDB
+## Points forts de MongoDB
 
 - performance (en particulier avec le map/reduce)
 - big data (jusqu'à des peta octets de données)
@@ -285,7 +285,7 @@ nb_movies_by_year_and_genre
 ```
 $lookup : pseudo jointure possible entre 2 collections. Possible uniquement pour les aggrégations.
 
-# Index
+## Index
 
 >Test sur la base sirenes de data.gouv
 
@@ -322,7 +322,7 @@ db.etablissements.createIndex({ siren: 1, nic: 1 }, { unique: true, name: "index
 
 ```
 
-##Indexation géospatiale
+## Indexation géospatiale
 
 API du gouvernement qui rend une cordonnée GPS à partir d'une adresse postale (utilise BANO)
 
