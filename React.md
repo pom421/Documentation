@@ -46,7 +46,7 @@ export default class ListUsers extends React.Component {
 }
 ```
 
-```
+```js
 import React from "react"
 
 export default class ListGeneric extends React.Component {
