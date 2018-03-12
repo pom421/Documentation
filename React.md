@@ -13,7 +13,7 @@
  
  Ici, une liste générique qui sait comment s'afficher et une liste qui récupère des informations à partir d'une requête Ajax.
 
-``
+```js
 import React from "react"
 import ListGeneric from "./ListGeneric"
 
@@ -44,9 +44,9 @@ export default class ListUsers extends React.Component {
     }
 
 }
-``
+```
 
-``
+```
 import React from "react"
 
 export default class ListGeneric extends React.Component {
@@ -68,4 +68,4 @@ export default class ListGeneric extends React.Component {
 
     }
 }
-``
+```
